@@ -37,6 +37,11 @@ public class dataBase {
         return closed;
     }
 
+    public static int getId() {
+        return id;
+    }
+
+    private static int id;
     private static String orderType;
     private static String orderUuid;
     private static String exchange;
