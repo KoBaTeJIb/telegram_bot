@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ru.kobatejib</groupId>
-	<artifactId>telegram_bot</artifactId>
+	<artifactId>telegram-bot-bittrex</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>telegram_bot</name>
-	<description>This is telegram_bot for ....</description>
+	<name>telegram-bot-bittrex</name>
+	<description>This is telegram-bot for Bittrex.</description>
 
 	<properties>
 		<project.encoding>UTF-8</project.encoding>

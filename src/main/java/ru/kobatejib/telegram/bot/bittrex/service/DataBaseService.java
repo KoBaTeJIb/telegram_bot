@@ -1,9 +1,10 @@
+package ru.kobatejib.telegram.bot.bittrex.service;
 import java.sql.*;
 
 /**
  * Created by Kovatelj on 17.07.2017.
  */
-public class dataBase {
+public class DataBaseService {
 
     public static Connection connection;
     public static Statement statement;
