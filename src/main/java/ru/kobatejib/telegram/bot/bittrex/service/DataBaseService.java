@@ -88,7 +88,7 @@ public class DataBaseService {
         }
     }
 
-    public static void writeDb(String OrderType, String OrderUuid, String Exchange,
+    /*public static void writeDb(String OrderType, String OrderUuid, String Exchange,
                                String Quantity, String Price, String Opened,
                                String Closed) throws ClassNotFoundException, SQLException {
 
@@ -111,12 +111,20 @@ public class DataBaseService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }*/
+
+    public static void writeDb (String query) throws ClassNotFoundException, SQLException {
+        try {
+            statement.execute("INSERT INTO 'bittrex' ('order_type', 'order_uuid', 'exchange', 'quantity', 'price', 'opened', 'closed') VALUES (" + query + ");");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void readDb() throws ClassNotFoundException, SQLException {
 
         try {
-            resultSet = statement.executeQuery("SELECT * FROM 'bittrex'");
+            resultSet = statement.executeQuery("SELECT * FROM 'bittrex' WHERE closed=null");
             int id = resultSet.getInt("id");
             orderType = resultSet.getString("order_type");
             orderUuid = resultSet.getString("order_uuid");
@@ -125,6 +133,7 @@ public class DataBaseService {
             opened = resultSet.getString("opened");
             closed = resultSet.getString("closed");
             quantity = resultSet.getString("quantity");
+            System.out.println(resultSet);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
