@@ -1,5 +1,8 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Kovatelj on 17.07.2017.
@@ -50,6 +53,14 @@ public class DataBaseService {
     private static String price;
     private static String opened;
     private static String closed;
+    private static HashMap<String, String> map = new HashMap<>();
+
+    public static List<HashMap<String, String>> getMapOpenOrder() {
+        return mapOpenOrder;
+    }
+
+    private static List<HashMap<String, String>> mapOpenOrder = new ArrayList<>();
+    private static int i = 0;
 
 
 
@@ -138,5 +149,24 @@ public class DataBaseService {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void queryOpenOrder() throws ClassNotFoundException, SQLException {
+
+        try {
+            resultSet = statement.executeQuery("SELECT * FROM 'bittrex' WHERE closed=null");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        while (resultSet.next()) {
+            orderUuid = resultSet.getString("order_uuid");
+            closed = resultSet.getString("closed");
+            map.put("OrderUuid", orderUuid);
+            map.put("Closed", closed);
+            mapOpenOrder.add(i, map);
+            i++;
+        }
+        //
     }
 }
