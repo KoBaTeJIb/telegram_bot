@@ -16,7 +16,6 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -305,9 +304,9 @@ public class Bittrex {
         return urlAttachment;
     }
 
-    public static List<Map<String, String>> getMapsFromResponse(String response) {
+    public static List<HashMap<String, String>> getMapsFromResponse(String response) {
 
-        final List<Map<String, String>> maps = new ArrayList<>();
+        final List<HashMap<String, String>> maps = new ArrayList<>();
 
         if(!response.contains("[")) {
 

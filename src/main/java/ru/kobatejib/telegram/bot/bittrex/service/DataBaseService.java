@@ -1,20 +1,74 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
-import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
 /**
  * Created by Kovatelj on 17.07.2017.
  */
 public class DataBaseService {
 
-    public Connection connection;
-    public Statement statement;
+    public static Connection connection;
+    public static Statement statement;
+    public static ResultSet resultSet;
 
-    public void connect() throws ClassNotFoundException, SQLException {
+    public static String getOrderType() {
+        return orderType;
+    }
+
+    public static String getOrderUuid() {
+        return orderUuid;
+    }
+
+    public static String getExchange() {
+        return exchange;
+    }
+
+    public static String getQuantity() {
+        return quantity;
+    }
+
+    public static String getPrice() {
+        return price;
+    }
+
+    public static String getOpened() {
+        return opened;
+    }
+
+    public static String getClosed() {
+        return closed;
+    }
+
+    public static int getId() {
+        return id;
+    }
+
+    private static int id;
+    private static String orderType;
+    private static String orderUuid;
+    private static String exchange;
+    private static String quantity;
+    private static String price;
+    private static String opened;
+    private static String closed;
+    private static HashMap<String, String> map = new HashMap<>();
+
+    public static List<HashMap<String, String>> getMapOpenOrder() {
+        return mapOpenOrder;
+    }
+
+    private static List<HashMap<String, String>> mapOpenOrder = new ArrayList<>();
+    private static int i = 0;
+
+
+
+
+
+
+
+    public static void connect() throws ClassNotFoundException, SQLException {
         try {
             connection = null;
             Class.forName("org.sqlite.JDBC");
@@ -26,7 +80,7 @@ public class DataBaseService {
 
     }
 
-    public void createDb() throws ClassNotFoundException, SQLException {
+    public static void createDb() throws ClassNotFoundException, SQLException {
 
         try {
             statement = connection.createStatement();
@@ -45,34 +99,74 @@ public class DataBaseService {
         }
     }
 
-    public void writeDb (Order order) throws ClassNotFoundException, SQLException {
-		try {
-			statement.execute("INSERT INTO 'bittrex' "
-					+ "('order_type', 'order_uuid', 'exchange', 'quantity', 'price', 'opened', 'closed') "
-					+ "VALUES " + "(" + order.getOrderType() + ","
-					+ order.getOrderUuid() + "," 
-					+ order.getExchange() + ","
-					+ order.getQuantity() + "," 
-					+ order.getPrice() + ","
-					+ order.getOpened() + "," 
-					+ order.getClass() + ","
-					+ order.getPrice() + ");");
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+    /*public static void writeDb(String OrderType, String OrderUuid, String Exchange,
+                               String Quantity, String Price, String Opened,
+                               String Closed) throws ClassNotFoundException, SQLException {
+
+        try {
+            statement.execute("INSERT INTO 'bittrex' (" +
+                    "'order_type', " +
+                    "'order_uuid', " +
+                    "'exchange', " +
+                    "'quantity', " +
+                    "'price', " +
+                    "'opened', " +
+                    "'closed') " +
+                    "VALUES ('" + OrderType + "', " +
+                    "'" + OrderUuid + "', " +
+                    "'" + Exchange + "', " +
+                    "'" + Quantity + "', " +
+                    "'" + Price + "', " +
+                    "'" + Opened + "', " +
+                    "'" + Closed + "');");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }*/
+
+    public static void writeDb (String query) throws ClassNotFoundException, SQLException {
+        try {
+            statement.execute("INSERT INTO 'bittrex' ('order_type', 'order_uuid', 'exchange', 'quantity', 'price', 'opened', 'closed') VALUES (" + query + ");");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-	public List<Order> findAllByClosed(Boolean closed) throws ClassNotFoundException, SQLException {
-		List<Order> orders = new ArrayList<Order>();
-		String closedParam = DataBaseUtility.convertBooean2String(closed);
-		try {
-			ResultSet resultSet = statement
-					.executeQuery("SELECT * FROM 'bittrex' WHERE closed=" + closedParam);
-			orders = DataBaseUtility.convertResultSet2ListOrders(resultSet);
-			System.out.println(resultSet);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return orders;
-	}
+    public static void readDb() throws ClassNotFoundException, SQLException {
+
+        try {
+            resultSet = statement.executeQuery("SELECT * FROM 'bittrex' WHERE closed=null");
+            int id = resultSet.getInt("id");
+            orderType = resultSet.getString("order_type");
+            orderUuid = resultSet.getString("order_uuid");
+            exchange = resultSet.getString("exchange");
+            price = resultSet.getString("price");
+            opened = resultSet.getString("opened");
+            closed = resultSet.getString("closed");
+            quantity = resultSet.getString("quantity");
+            System.out.println(resultSet);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void queryOpenOrder() throws ClassNotFoundException, SQLException {
+
+        try {
+            resultSet = statement.executeQuery("SELECT * FROM 'bittrex' WHERE closed=null");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        while (resultSet.next()) {
+            orderUuid = resultSet.getString("order_uuid");
+            closed = resultSet.getString("closed");
+            map.put("OrderUuid", orderUuid);
+            map.put("Closed", closed);
+            mapOpenOrder.add(i, map);
+            i++;
+        }
+        //
+    }
 }
