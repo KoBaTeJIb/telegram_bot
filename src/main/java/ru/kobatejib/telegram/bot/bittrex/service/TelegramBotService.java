@@ -44,7 +44,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// Set variables
 			Bittrex wrapper = new Bittrex();
-			wrapper.setAuthKeysFromTextFile("keys.txt");
+			wrapper.setAuthKeysFromTextFile("/keys.properties");
 			StringBuffer message_send = new StringBuffer();
 			String message_text = update.getMessage().getText();
 			long chat_id = update.getMessage().getChatId();
@@ -105,7 +105,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				break;
 
 			case "/help":
-				SendMessage message = new SendMessage();
+				SendMessage messageHelp = new SendMessage().setChatId(chat_id).setText("Custom message text");
 				// message.setChatId(chat_id);
 				// message.setText("Custom message text");
 
@@ -121,14 +121,15 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				// you need something else than text
 				row.add("balances");
 				row.add("orders");
+				row.add("db");
 				keyboard.add(row);
 				keyboardMarkup.setKeyboard(keyboard);
 				// Add it to the message
-				message.setReplyMarkup(keyboardMarkup);
+				messageHelp.setReplyMarkup(keyboardMarkup);
 
 				try {
 					// Send the message
-					sendMessage(message);
+					sendMessage(messageHelp);
 				} catch (TelegramApiException e) {
 					e.printStackTrace();
 				}

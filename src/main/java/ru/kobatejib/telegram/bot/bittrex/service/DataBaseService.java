@@ -47,9 +47,11 @@ public class DataBaseService {
 
     public void writeDb (Order order) throws ClassNotFoundException, SQLException {
 		try {
+			System.out.println(order);
 			statement.execute("INSERT INTO 'bittrex' "
 					+ "('order_type', 'order_uuid', 'exchange', 'quantity', 'price', 'opened', 'closed') "
-					+ "VALUES " + "(" + order.getOrderType() + ","
+					+ "VALUES ("
+					+ order.getOrderType() + ","
 					+ order.getOrderUuid() + "," 
 					+ order.getExchange() + ","
 					+ order.getQuantity() + "," 
@@ -64,7 +66,7 @@ public class DataBaseService {
 
 	public List<Order> findAllByClosed(Boolean closed) throws ClassNotFoundException, SQLException {
 		List<Order> orders = new ArrayList<Order>();
-		String closedParam = DataBaseUtility.convertBooean2String(closed);
+		String closedParam = DataBaseUtility.convertBoolean2String(closed);
 		try {
 			ResultSet resultSet = statement
 					.executeQuery("SELECT * FROM 'bittrex' WHERE closed=" + closedParam);
