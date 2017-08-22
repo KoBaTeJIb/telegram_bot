@@ -17,14 +17,14 @@ import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
  */
 public class DataBaseUtility {
 	
-	private final static  String  ORDER_ID = "Id";
-	private final static  String  ORDER_TYPE_FIELD = "OrderType";
-	private final static  String  ORDER_UUID_FIELD = "OrderUuid";
-	private final static  String  EXCHANGE_FIELD = "Exchange";
-	private final static  String  QUANTITY_FIELD = "Quantity";
-	private final static  String  PRICE_FIELD = "Price";
-	private final static  String  OPENED_FIELD = "Opened";
-	private final static  String  CLOSED_FIELD = "Closed";
+	private final static  String  ORDER_ID= "Id";
+	private final static  String  ORDER_TYPE_FIELD= "OrderType";
+	private final static  String  ORDER_UUID_FIELD= "OrderUuid";
+	private final static  String  EXCHANGE_FIELD= "Exchange";
+	private final static  String  QUANTITY_FIELD= "Quantity";
+	private final static  String  PRICE_FIELD= "Price";
+	private final static  String  OPENED_FIELD= "Opened";
+	private final static  String  CLOSED_FIELD= "Closed";
 
 	
 	/**
@@ -78,7 +78,7 @@ public class DataBaseUtility {
 	 *            признак
 	 * @return строка
 	 */
-	public static String convertBoolean2String(Boolean isBoolean) {
+	public static String convertBooean2String(Boolean isBoolean) {
 		String value;
 		if (isBoolean == null) {
 			value = "null";
