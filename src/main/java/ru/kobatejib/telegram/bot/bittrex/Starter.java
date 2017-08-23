@@ -60,7 +60,7 @@ public class Starter {
 		// Some responses have more than 1 map - the List must be traversed in
 		// these cases.
 		String otherRawResponse = wrapper.getBalances();
-		List<HashMap<String, String>> allBalancesMapList = Bittrex.getMapsFromResponse(otherRawResponse);
+		List<Map<String, String>> allBalancesMapList = Bittrex.getMapsFromResponse(otherRawResponse);
 
 		// for (HashMap<String, String> map : allBalancesMapList)
 
@@ -76,7 +76,7 @@ public class Starter {
 		// }
 
 		String responseOrder = wrapper.getOpenOrders();
-		List<HashMap<String, String>> allOrderMapList = Bittrex.getMapsFromResponse(responseOrder);
+		List<Map<String, String>> allOrderMapList = Bittrex.getMapsFromResponse(responseOrder);
 
 		// for (HashMap<String, String> map : allOrderMapList)
 		// System.out.println(map);
