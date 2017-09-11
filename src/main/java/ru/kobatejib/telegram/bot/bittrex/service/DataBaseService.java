@@ -67,7 +67,7 @@ public class DataBaseService {
 							+ "VALUES " + "(" + order.getOrderType() + ","
 							+ order.getOrderUuid() + "," + order.getExchange()
 							+ "," + order.getQuantity() + "," + order.getPrice()
-							+ "," + order.getOpened() + "," + order.getClass()
+							+ "," + order.getOpened() + "," + order.getClosed()
 							+ ");");
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
