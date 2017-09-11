@@ -12,11 +12,10 @@ import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
  */
 public class DataBaseService {
 
-	public Connection connection;
+	public Connection connection= null;
 
 	public void connect() throws ClassNotFoundException, SQLException {
 		try {
-			connection = null;
 			Class.forName("org.sqlite.JDBC");
 			connection = DriverManager.getConnection("jdbc:sqlite:bittrex.db");
 			System.out.println("Connection OK");

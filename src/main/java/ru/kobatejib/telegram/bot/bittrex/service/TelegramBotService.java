@@ -36,7 +36,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 	 * String>> allOrderList = Bittrex.getMapsFromResponse(responseOrders); } }
 	 */
 
-	DataBaseService database = new DataBaseService();
+	DataBaseService database;
 
 	@Override
 	public void onUpdateReceived(Update update) {
@@ -174,6 +174,12 @@ public class TelegramBotService extends TelegramLongPollingBot {
 	public String getBotToken() {
 		return "357230969:AAHZbPksnG6ubGC5hVcQz_-vIHsoYnAf49g";
 	}
+
+	public void setDatabase(DataBaseService database) {
+		this.database = database;
+	}
+
+	
 }
 
 // https://monsterdeveloper.gitbooks.io/writing-telegram-bots-on-java/content/chapter1.html

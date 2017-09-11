@@ -23,14 +23,14 @@ public class Starter {
 		ApiContextInitializer.init();
 
 		TelegramBotsApi botsApi = new TelegramBotsApi();
-
+		DataBaseService db = new DataBaseService();
 		try {
-			botsApi.registerBot(new TelegramBotService());
+			TelegramBotService tb =  new TelegramBotService();
+			tb.setDatabase(db);
+			botsApi.registerBot(tb);
 		} catch (TelegramApiRequestException e) {
 			e.printStackTrace();
 		}
-
-		DataBaseService db = new DataBaseService();
 
 		db.connect();
 		db.createDb();
