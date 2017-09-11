@@ -40,6 +40,8 @@ public class DataBaseService {
 							+ "'price' text, " + "'opened' text, "
 							+ "'closed' text);");
 					System.out.println("Create table OK");
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
 				} finally {
 					if (statement != null) {
 						statement.close();
@@ -57,7 +59,6 @@ public class DataBaseService {
 	public void writeDb(Order order)
 			throws ClassNotFoundException, SQLException {
 		if (connection != null) {
-			try {
 				Statement statement = null;
 				try {
 					statement = connection.createStatement();
@@ -67,16 +68,16 @@ public class DataBaseService {
 							+ order.getOrderUuid() + "," + order.getExchange()
 							+ "," + order.getQuantity() + "," + order.getPrice()
 							+ "," + order.getOpened() + "," + order.getClass()
-							+ "," + order.getPrice() + ");");
+							+ ");");
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
 				} finally {
 					if (statement != null) {
 						statement.close();
 					}
 				}
 
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
+			
 		} else {
 			System.out.println("Error connection is null");
 		}
