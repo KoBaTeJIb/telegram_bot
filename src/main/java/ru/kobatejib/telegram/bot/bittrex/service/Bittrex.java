@@ -11,11 +11,13 @@ import ru.kobatejib.telegram.bot.bittrex.utility.EncryptionUtility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -60,7 +62,8 @@ public class Bittrex {
 
     public void setAuthKeysFromTextFile(String textFile) { // Add the text file containing the key & secret in the same path as the source code
 
-        try (Scanner scan = new Scanner(getClass().getResourceAsStream(textFile))) {
+        InputStream InputStream = Bittrex.class.getResourceAsStream(textFile);
+        try (Scanner scan = new Scanner(InputStream)) {
 
             String apikeyLine = scan.nextLine(), secretLine = scan.nextLine();
 
@@ -304,9 +307,9 @@ public class Bittrex {
         return urlAttachment;
     }
 
-    public static List<HashMap<String, String>> getMapsFromResponse(String response) {
+    public static List<Map<String, String>> getMapsFromResponse(String response) {
 
-        final List<HashMap<String, String>> maps = new ArrayList<>();
+        final List<Map<String, String>> maps = new ArrayList<>();
 
         if(!response.contains("[")) {
 

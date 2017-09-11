@@ -11,15 +11,15 @@ import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
+import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
+
+
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TimerTask;
 
-import static java.sql.DriverManager.*;
+import java.util.List;
+import java.util.Map;
 
 public class TelegramBotService extends TelegramLongPollingBot {
 
@@ -52,7 +52,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 			switch (message_text) {
 			case "balances":
 				String otherRawResponse = wrapper.getBalances();
-				List<HashMap<String, String>> allBalancesMapList = Bittrex.getMapsFromResponse(otherRawResponse);
+				List<Map<String, String>> allBalancesMapList = Bittrex.getMapsFromResponse(otherRawResponse);
 				for (int i = 0; i < allBalancesMapList.size(); i++) {
 					if (!allBalancesMapList.get(i).get("Balance").equals("0.00000000")) {
 						message_send.append(allBalancesMapList.get(i).get("Currency")).append("\t")
@@ -71,7 +71,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 			case "orders":
 				String responseOrder = wrapper.getOpenOrders();
-				List<HashMap<String, String>> allOrderMapList = Bittrex.getMapsFromResponse(responseOrder);
+				List<Map<String, String>> allOrderMapList = Bittrex.getMapsFromResponse(responseOrder);
 				if (allOrderMapList.get(0) == null) {
 					SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText("Нет открытых ордеров");
 					try {
@@ -81,20 +81,18 @@ public class TelegramBotService extends TelegramLongPollingBot {
 						e.printStackTrace();
 					}
 				} else {
-					for (int i = 0; i < allOrderMapList.size(); i++) {
+					for (Map<String, String> orderMap: allOrderMapList) {
+						Order order = DataBaseUtility.map2Order(orderMap);
 						try {
-							database.writeDb(allOrderMapList.get(i).get("OrderType"),
-									allOrderMapList.get(i).get("OrderUuid"), allOrderMapList.get(i).get("Exchange"),
-									allOrderMapList.get(i).get("Quantity"), allOrderMapList.get(i).get("Price"),
-									allOrderMapList.get(i).get("Opened"), allOrderMapList.get(i).get("Closed"));
+							database.writeDb(order);
 						} catch (ClassNotFoundException e) {
 							e.printStackTrace();
 						} catch (SQLException e) {
 							e.printStackTrace();
 						}
 
-						message_send.append(allOrderMapList.get(i).get("Exchange")).append("\n")
-								.append(allOrderMapList.get(i).get("Quantity")).append("\n");
+						message_send.append(order.getExchange()).append("\n")
+								.append(order.getQuantity()).append("\n");
 					}
 					SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(message_send.toString());
 					try {
@@ -136,26 +134,30 @@ public class TelegramBotService extends TelegramLongPollingBot {
 					e.printStackTrace();
 				}
 				break;
-
+				
 			case "db":
-
+				List<Order> orders = new ArrayList<Order>();
 				try {
-					database.readDb();
+					orders = database.findAllByClosed(null);
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-
-				String Exchange = database.getExchange();
-				System.out.println(Exchange);
-				SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(Exchange);
-				try {
-					sendMessage(messageOrders); // Sending our message object to
-												// user
-				} catch (TelegramApiException e) {
-					e.printStackTrace();
+				if(!orders.isEmpty()) {
+					for(Order order: orders) {
+						String exchange = order.getExchange();
+						System.out.println(exchange);
+						SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(exchange);
+						try {
+							sendMessage(messageOrders); // Sending our message object to
+														// user
+						} catch (TelegramApiException e) {
+							e.printStackTrace();
+						}
+					}
 				}
+				
 
 				break;
 
