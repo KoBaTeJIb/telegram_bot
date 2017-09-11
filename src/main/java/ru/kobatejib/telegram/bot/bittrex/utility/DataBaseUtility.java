@@ -122,6 +122,6 @@ public class DataBaseUtility {
 
 		String quantity = orderMap.get(QUANTITY_FIELD);
 		order.setQuantity(quantity);
-		return null;
+		return order;
 	}
 }
