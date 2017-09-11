@@ -11,6 +11,7 @@ import ru.kobatejib.telegram.bot.bittrex.utility.EncryptionUtility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -61,7 +62,8 @@ public class Bittrex {
 
     public void setAuthKeysFromTextFile(String textFile) { // Add the text file containing the key & secret in the same path as the source code
 
-        try (Scanner scan = new Scanner(getClass().getResourceAsStream(textFile))) {
+        InputStream InputStream = Bittrex.class.getResourceAsStream(textFile);
+        try (Scanner scan = new Scanner(InputStream)) {
 
             String apikeyLine = scan.nextLine(), secretLine = scan.nextLine();
 

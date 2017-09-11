@@ -44,7 +44,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// Set variables
 			Bittrex wrapper = new Bittrex();
-			wrapper.setAuthKeysFromTextFile("keys.txt");
+			wrapper.setAuthKeysFromTextFile("/keys.properties");
 			StringBuffer message_send = new StringBuffer();
 			String message_text = update.getMessage().getText();
 			long chat_id = update.getMessage().getChatId();

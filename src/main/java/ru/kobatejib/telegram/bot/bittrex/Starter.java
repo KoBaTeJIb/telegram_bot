@@ -39,7 +39,7 @@ public class Starter {
 		// timer.schedule(new checkOrdersOpen(), 1000, 5000);
 
 		Bittrex wrapper = new Bittrex();
-		wrapper.setAuthKeysFromTextFile("keys.txt");
+		wrapper.setAuthKeysFromTextFile("/keys.properties");
 		// String rawResponse = wrapper.getMarketSummary("BTC-LTC");
 		// List<HashMap<String, String>> responseMapList =
 		// Bittrex.getMapsFromResponse(rawResponse);
