@@ -27,8 +27,6 @@ public class DataBaseService {
 	}
 
 	public void createDb() throws ClassNotFoundException, SQLException {
-
-		try {
 			if (connection != null) {
 				Statement statement = null;
 				try {
@@ -48,12 +46,10 @@ public class DataBaseService {
 					}
 				}
 			} else {
-				System.out.println("Error connection is null");
+				System.out.println("Error createDb is null");
 			}
 
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+		
 	}
 
 	public void writeDb(Order order)
@@ -76,10 +72,8 @@ public class DataBaseService {
 						statement.close();
 					}
 				}
-
-			
 		} else {
-			System.out.println("Error connection is null");
+			System.out.println("Error writeDb is null");
 		}
 
 	}
@@ -104,7 +98,7 @@ public class DataBaseService {
 				}
 			}
 		} else {
-			System.out.println("Error connection is null");
+			System.out.println("Error findAllByClosed is null");
 		}
 
 		return orders;
