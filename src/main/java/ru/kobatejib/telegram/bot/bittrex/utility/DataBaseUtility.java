@@ -78,7 +78,7 @@ public class DataBaseUtility {
 	 *            признак
 	 * @return строка
 	 */
-	public static String convertBooean2String(Boolean isBoolean) {
+	public static String convertBoolean2String(Boolean isBoolean) {
 		String value;
 		if (isBoolean == null) {
 			value = "null";

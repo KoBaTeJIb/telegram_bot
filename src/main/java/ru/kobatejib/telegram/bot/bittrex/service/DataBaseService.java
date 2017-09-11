@@ -57,13 +57,21 @@ public class DataBaseService {
 				Statement statement = null;
 				try {
 					statement = connection.createStatement();
-					statement.execute("INSERT INTO 'bittrex' "
-							+ "('order_type', 'order_uuid', 'exchange', 'quantity', 'price', 'opened', 'closed') "
-							+ "VALUES " + "(" + order.getOrderType() + ","
-							+ order.getOrderUuid() + "," + order.getExchange()
-							+ "," + order.getQuantity() + "," + order.getPrice()
-							+ "," + order.getOpened() + "," + order.getClosed()
-							+ ");");
+                    statement.execute("INSERT INTO bittrex (" +
+                            "order_type, " +
+                            "order_uuid, " +
+                            "exchange, " +
+                            "quantity, " +
+                            "price, " +
+                            "opened, " +
+                            "closed) "
+							+ "VALUES " + "('" + order.getOrderType() + "', '"
+							+ order.getOrderUuid() + "', '"
+                            + order.getExchange() + "', '"
+                            + order.getQuantity() + "', '"
+                            + order.getPrice() + "', '"
+                            + order.getOpened() + "', '"
+                            + order.getClosed() + "');");
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				} finally {
@@ -80,7 +88,7 @@ public class DataBaseService {
 	public List<Order> findAllByClosed(Boolean closed)
 			throws ClassNotFoundException, SQLException {
 		List<Order> orders = new ArrayList<Order>();
-		String closedParam = DataBaseUtility.convertBooean2String(closed);
+		String closedParam = DataBaseUtility.convertBoolean2String(closed);
 		Statement statement = null;
 		if (connection != null) {
 			try {
