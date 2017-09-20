@@ -23,18 +23,6 @@ import java.util.Map;
 
 public class TelegramBotService extends TelegramLongPollingBot {
 
-	// public telegramBot() throws SQLException {
-	// }
-
-	/*
-	 * public class checkOrdersOpen extends TimerTask {
-	 * 
-	 * @Override public void run() { Bittrex wrapper = new Bittrex();
-	 * wrapper.setAuthKeysFromTextFile("keys.txt");
-	 * 
-	 * String responseOrders = wrapper.getOpenOrders(); List<HashMap<String,
-	 * String>> allOrderList = Bittrex.getMapsFromResponse(responseOrders); } }
-	 */
 
 	DataBaseService database;
 
