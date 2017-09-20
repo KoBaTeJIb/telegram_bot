@@ -2,6 +2,7 @@ package ru.kobatejib.telegram.bot.bittrex.service;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
@@ -14,6 +15,15 @@ public class DataBaseService {
 
 	public Connection connection= null;
 
+	private static  DataBaseService INSTANCE = new DataBaseService();
+
+	private DataBaseService() {
+	}
+	
+	public static DataBaseService getInstance() {
+		return INSTANCE;
+	}
+			
 	public void connect() throws ClassNotFoundException, SQLException {
 		try {
 			Class.forName("org.sqlite.JDBC");

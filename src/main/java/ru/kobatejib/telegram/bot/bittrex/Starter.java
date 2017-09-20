@@ -24,7 +24,7 @@ public class Starter {
 		ApiContextInitializer.init();
 
 		TelegramBotsApi botsApi = new TelegramBotsApi();
-		DataBaseService db = new DataBaseService();
+		DataBaseService db = DataBaseService.getInstance();
 		try {
 			TelegramBotService tb =  new TelegramBotService();
 			tb.setDatabase(db);
