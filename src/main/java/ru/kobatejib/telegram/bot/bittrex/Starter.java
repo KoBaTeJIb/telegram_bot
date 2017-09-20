@@ -11,6 +11,7 @@ import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
 import ru.kobatejib.telegram.bot.bittrex.service.Bittrex;
+import ru.kobatejib.telegram.bot.bittrex.service.CheckOrders;
 import ru.kobatejib.telegram.bot.bittrex.service.DataBaseService;
 import ru.kobatejib.telegram.bot.bittrex.service.TelegramBotService;
 
@@ -18,7 +19,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Starter {
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, InterruptedException  {
 
 		ApiContextInitializer.init();
 
@@ -34,6 +35,7 @@ public class Starter {
 
 		db.connect();
 		db.createDb();
+
 
 		// Timer timer = new Timer();
 		// timer.schedule(new checkOrdersOpen(), 1000, 5000);
@@ -86,13 +88,11 @@ public class Starter {
 		// System.out.println(responseOrder);
 	}
 
-	static class sayDate extends TimerTask {
-		Date now;
+		TimerTask timerTask = new CheckOrders();
+		// стартуем TimerTask в виде демона
 
-		@Override
-		public void run() {
-			now = new Date();
-			System.out.println(now);
-		}
-	}
+		Timer timer = new Timer(true);
+		// будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
+		timer.scheduleAtFixedRate(timerTask, 0, 10*1000)
+		System.out.println("TimerTask начал выполнение")
 }

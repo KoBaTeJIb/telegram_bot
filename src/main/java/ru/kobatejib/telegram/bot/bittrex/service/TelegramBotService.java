@@ -83,15 +83,15 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				} else {
 					for (Map<String, String> orderMap: allOrderMapList) {
 						Order order = DataBaseUtility.map2Order(orderMap);
-						try {
+						/*try {
 							database.writeDb(order);
 						} catch (ClassNotFoundException e) {
 							e.printStackTrace();
 						} catch (SQLException e) {
 							e.printStackTrace();
-						}
+						}*/
 
-						message_send.append(order.getExchange()).append("\n")
+						message_send.append(order.getExchange()).append("\t")
 								.append(order.getQuantity()).append("\n");
 					}
 					SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(message_send.toString());
@@ -135,7 +135,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				}
 				break;
 				
-			case "db":
+			/*case "db":
 				List<Order> orders = new ArrayList<Order>();
 				try {
 					orders = database.findAllByClosed(null);
@@ -146,9 +146,10 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				}
 				if(!orders.isEmpty()) {
 					for(Order order: orders) {
-						String exchange = order.getExchange();
+						String exchange = order.getExchange().append("\t") //не доделал!!!!!
+								.append(order.getQuantity()).append("\n");
 						System.out.println(exchange);
-						SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(exchange);
+						SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(exchange.toString());
 						try {
 							sendMessage(messageOrders); // Sending our message object to
 														// user
@@ -159,7 +160,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				}
 				
 
-				break;
+				break;*/
 
 			}
 		}

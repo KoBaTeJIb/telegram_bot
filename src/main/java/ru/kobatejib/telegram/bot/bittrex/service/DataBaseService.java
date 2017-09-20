@@ -94,7 +94,7 @@ public class DataBaseService {
 			try {
 				statement = connection.createStatement();
 				ResultSet resultSet = statement.executeQuery(
-						"SELECT * FROM 'bittrex' WHERE closed=" + closedParam);
+						"SELECT * FROM 'bittrex' WHERE closed='" + closedParam + "';");
 				orders = DataBaseUtility.convertResultSet2ListOrders(resultSet);
 				System.out.println(resultSet);
 			} catch (Exception e) {
