@@ -86,13 +86,15 @@ public class Starter {
 		// System.out.println(allOrderMapList.get(0).get("Exchange") + " " +
 		// allOrderMapList.get(0).get("Quantity"));
 		// System.out.println(responseOrder);
-	}
-
+		
 		TimerTask timerTask = new CheckOrders();
 		// стартуем TimerTask в виде демона
 
 		Timer timer = new Timer(true);
 		// будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
-		timer.scheduleAtFixedRate(timerTask, 0, 10*1000)
-		System.out.println("TimerTask начал выполнение")
+		timer.scheduleAtFixedRate(timerTask, 0, 10*1000);
+		System.out.println("TimerTask начал выполнение");
+	}
+
+		
 }
