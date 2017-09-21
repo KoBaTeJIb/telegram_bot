@@ -11,7 +11,8 @@ import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
 import ru.kobatejib.telegram.bot.bittrex.service.Bittrex;
-import ru.kobatejib.telegram.bot.bittrex.service.CheckOrders;
+import ru.kobatejib.telegram.bot.bittrex.service.CheckOrdersService;
+import ru.kobatejib.telegram.bot.bittrex.service.CheckOrdersService;
 import ru.kobatejib.telegram.bot.bittrex.service.DataBaseService;
 import ru.kobatejib.telegram.bot.bittrex.service.TelegramBotService;
 
@@ -37,7 +38,7 @@ public class Starter {
 		db.createDb();
 
 
-		TimerTask timerTask = new CheckOrders();
+		TimerTask timerTask = new CheckOrdersService();
 		// стартуем TimerTask в виде демона
 
 		Timer timer = new Timer(true);
