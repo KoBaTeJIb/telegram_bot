@@ -24,14 +24,14 @@ import java.util.Map;
 public class TelegramBotService extends TelegramLongPollingBot {
 
 
-	DataBaseService database;
+	DataBaseService database = DataBaseService.getInstance();
 
 	@Override
 	public void onUpdateReceived(Update update) {
 		// We check if the update has a message and the message has text
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			// Set variables
-			Bittrex wrapper = new Bittrex();
+			Bittrex wrapper = Bittrex.getINSTANCE();
 			wrapper.setAuthKeysFromTextFile("/keys.properties");
 			StringBuffer message_send = new StringBuffer();
 			String message_text = update.getMessage().getText();

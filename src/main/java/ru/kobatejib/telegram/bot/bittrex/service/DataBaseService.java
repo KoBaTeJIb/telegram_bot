@@ -15,7 +15,7 @@ public class DataBaseService {
 
 	public Connection connection= null;
 
-	private static  DataBaseService INSTANCE = new DataBaseService();
+	private static DataBaseService INSTANCE = new DataBaseService();
 
 	private DataBaseService() {
 	}

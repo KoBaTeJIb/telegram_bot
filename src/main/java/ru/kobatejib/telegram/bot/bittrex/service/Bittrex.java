@@ -36,6 +36,18 @@ public class Bittrex {
     private final int retryAttempts;
     private int retryAttemptsLeft;
     private final int retryDelaySeconds;
+    private static Bittrex INSTANCE = new Bittrex();
+
+    public static Bittrex getINSTANCE() {
+        return INSTANCE;
+    }
+
+    public static void setINSTANCE(Bittrex INSTANCE) {
+        Bittrex.INSTANCE = INSTANCE;
+    }
+
+
+
 
     public Bittrex(String apikey, String secret, int retryAttempts, int retryDelaySeconds) {
 
