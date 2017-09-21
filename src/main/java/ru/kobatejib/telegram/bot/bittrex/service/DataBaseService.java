@@ -2,7 +2,6 @@ package ru.kobatejib.telegram.bot.bittrex.service;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;

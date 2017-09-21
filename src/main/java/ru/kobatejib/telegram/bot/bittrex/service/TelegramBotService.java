@@ -14,8 +14,6 @@ import org.telegram.telegrambots.exceptions.TelegramApiException;
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;

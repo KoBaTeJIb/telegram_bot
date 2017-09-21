@@ -10,8 +10,6 @@ import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
 import org.telegram.telegrambots.exceptions.TelegramApiRequestException;
 
-import ru.kobatejib.telegram.bot.bittrex.service.Bittrex;
-import ru.kobatejib.telegram.bot.bittrex.service.CheckOrdersService;
 import ru.kobatejib.telegram.bot.bittrex.service.CheckOrdersService;
 import ru.kobatejib.telegram.bot.bittrex.service.DataBaseService;
 import ru.kobatejib.telegram.bot.bittrex.service.TelegramBotService;
