@@ -101,8 +101,8 @@ public class DataBaseService {
 			Statement statement = null;
 			try {
 				statement = connection.createStatement();
-				statement.execute("UPDATE INTO bittrex SET closed='"
-						+ closed + "' WHERE order_uuid='" + uuid + "');");
+				statement.execute("UPDATE bittrex SET closed='"
+						+ closed + "' WHERE order_uuid='" + uuid + "';");
 
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -129,7 +129,7 @@ public class DataBaseService {
 				ResultSet resultSet = statement.executeQuery(
 						"SELECT * FROM 'bittrex' WHERE closed='" + closedParam + "';");
 				orders = DataBaseUtility.convertResultSet2ListOrders(resultSet);
-				System.out.println(resultSet);
+				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {

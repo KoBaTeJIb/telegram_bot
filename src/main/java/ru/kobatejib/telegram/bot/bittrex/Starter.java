@@ -41,7 +41,7 @@ public class Starter {
 
 		Timer timer = new Timer(true);
 		// будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
-		timer.scheduleAtFixedRate(timerTask, 0, 10*1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 60*1000);
 		System.out.println("TimerTask начал выполнение");
 	}
 
