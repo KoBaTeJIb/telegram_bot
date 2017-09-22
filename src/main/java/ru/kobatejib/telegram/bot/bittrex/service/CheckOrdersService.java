@@ -26,7 +26,43 @@ public class CheckOrdersService extends TimerTask {
             List<Order> ordersOld = new ArrayList<>();
             List<Order> ordersNew = new ArrayList<>();
             List<Order> ordersDB = new ArrayList<>();
+            List<Order> ordersDelete = new ArrayList<>();
             ordersDB = database.findAllByClosed(null);
+
+            List<Order> ordersBittrex = new ArrayList<Order>();
+            for (Map<String, String> orderMap : allOrderMapList) {
+            	 Order order = DataBaseUtility.map2Order(orderMap);
+            	 ordersBittrex.add(order);
+            }
+            
+            for(Order orderBittrex: ordersBittrex) {
+            	boolean isNew = true;
+            	for(Order orderDB: ordersDB) {
+            		if (orderBittrex.getOrderUuid().equals(orderDB.getOrderUuid())) {
+                        ordersOld.add(orderBittrex);
+                        isNew = false;
+                    }
+            	}
+            	if (isNew) {
+                    ordersNew.add(orderBittrex);
+                }
+            }
+            
+            for(Order orderDB: ordersDB) {
+            	boolean isDelete = true;
+            	for(Order orderOld: ordersOld) {
+            		if (orderDB.getOrderUuid().equals(orderOld.getOrderUuid())) {
+                        isDelete = false;
+                    }
+            	}
+            	if(isDelete) {
+            		ordersDelete.add(orderDB);
+            	}
+        	}
+            // все есть список новых ordersNew
+            // есть список старых (возможно их нужно обновить) ordersOld!!!!
+            // и список который нужно удалить  ordersDelete
+           //дальше делай что хочешь
 
 
             if (allOrderMapList.get(0) != null) {
