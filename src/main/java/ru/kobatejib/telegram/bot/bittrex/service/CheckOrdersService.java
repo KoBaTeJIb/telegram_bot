@@ -54,7 +54,6 @@ public class CheckOrdersService extends TimerTask {
                 }
                 if(!ordersNew.isEmpty()) {
                     for (Order order : ordersNew) {
-                        order.setClosed("closed");
                         database.writeDb(order);
                         System.out.println("Ордер " + order.getExchange() + "\t" + order.getQuantity()
                                             + "\t - Закрыт\n");

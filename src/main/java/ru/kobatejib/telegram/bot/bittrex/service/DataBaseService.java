@@ -95,6 +95,30 @@ public class DataBaseService {
 
 	}
 
+
+	public void uprdateDb(String uuid, String closed)
+			throws ClassNotFoundException, SQLException {
+		if (connection != null) {
+			Statement statement = null;
+			try {
+				statement = connection.createStatement();
+				statement.execute("UPDATE INTO bittrex SET closed='"
+						+ closed + "' WHERE order_uuid='" + uuid + "');");
+
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				if (statement != null) {
+					statement.close();
+				}
+			}
+		} else {
+			System.out.println("Error writeDb is null");
+		}
+
+	}
+
+
 	public List<Order> findAllByClosed(Boolean closed)
 			throws ClassNotFoundException, SQLException {
 		List<Order> orders = new ArrayList<Order>();
