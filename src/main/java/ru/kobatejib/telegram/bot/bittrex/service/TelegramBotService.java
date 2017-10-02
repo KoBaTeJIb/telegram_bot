@@ -11,6 +11,7 @@ import org.telegram.telegrambots.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
@@ -20,6 +21,18 @@ import java.util.List;
 import java.util.Map;
 
 public class TelegramBotService extends TelegramLongPollingBot {
+
+	private static TelegramBotService INSTANCE = new TelegramBotService();
+
+	public static TelegramBotService getINSTANCE() {
+		return INSTANCE;
+	}
+
+	public static void setINSTANCE(TelegramBotService INSTANCE) {
+		TelegramBotService.INSTANCE = INSTANCE;
+	}
+
+	final long CHAT_ID = 231358447;
 
 
 	DataBaseService database = DataBaseService.getInstance();
@@ -33,7 +46,10 @@ public class TelegramBotService extends TelegramLongPollingBot {
 			wrapper.setAuthKeysFromTextFile("/keys.properties");
 			StringBuffer message_send = new StringBuffer();
 			String message_text = update.getMessage().getText();
-			long chat_id = update.getMessage().getChatId();
+			/*if(CHAT_ID == 0) {
+				CHAT_ID = update.getMessage().getChatId();
+				System.out.println(CHAT_ID);
+			}*/
 
 			switch (message_text) {
 			case "balances":
@@ -42,10 +58,12 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				for (int i = 0; i < allBalancesMapList.size(); i++) {
 					if (!allBalancesMapList.get(i).get("Balance").equals("0.00000000")) {
 						message_send.append(allBalancesMapList.get(i).get("Currency")).append("\t")
-								.append(allBalancesMapList.get(i).get("Balance")).append("\n");
+								.append(allBalancesMapList.get(i).get("Balance")).append("\t");
+								//.append(allBalancesMapList.get(i).get(""))
+
 					}
 				}
-				SendMessage messageBalances = new SendMessage().setChatId(chat_id).setText(message_send.toString());
+				SendMessage messageBalances = new SendMessage().setChatId(CHAT_ID).setText(message_send.toString());
 
 				try {
 					sendMessage(messageBalances); // Sending our message object
@@ -59,7 +77,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				String responseOrder = wrapper.getOpenOrders();
 				List<Map<String, String>> allOrderMapList = Bittrex.getMapsFromResponse(responseOrder);
 				if (allOrderMapList.get(0) == null) {
-					SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText("Нет открытых ордеров");
+					SendMessage messageOrders = new SendMessage().setChatId(CHAT_ID).setText("Нет открытых ордеров");
 					try {
 						sendMessage(messageOrders); // Sending our message
 													// object to user
@@ -69,18 +87,11 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				} else {
 					for (Map<String, String> orderMap: allOrderMapList) {
 						Order order = DataBaseUtility.map2Order(orderMap);
-						/*try {
-							database.writeDb(order);
-						} catch (ClassNotFoundException e) {
-							e.printStackTrace();
-						} catch (SQLException e) {
-							e.printStackTrace();
-						}*/
-
 						message_send.append(order.getExchange()).append("\t")
+								.append(order.getOrderType())
 								.append(order.getQuantity()).append("\n");
 					}
-					SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(message_send.toString());
+					SendMessage messageOrders = new SendMessage().setChatId(CHAT_ID).setText(message_send.toString());
 					try {
 						sendMessage(messageOrders); // Sending our message
 													// object to user
@@ -91,8 +102,8 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				break;
 
 			case "/help":
-				SendMessage messageHelp = new SendMessage().setChatId(chat_id).setText("Custom message text");
-				// message.setChatId(chat_id);
+				SendMessage messageHelp = new SendMessage().setChatId(CHAT_ID).setText("Бот для работы с биржей Bittrex");
+				// message.setChatId(CHAT_ID);
 				// message.setText("Custom message text");
 
 				// Create ReplyKeyboardMarkup object
@@ -107,7 +118,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 				// you need something else than text
 				row.add("balances");
 				row.add("orders");
-				row.add("db");
+				//row.add("db");
 				keyboard.add(row);
 				keyboardMarkup.setKeyboard(keyboard);
 				// Add it to the message
@@ -120,36 +131,20 @@ public class TelegramBotService extends TelegramLongPollingBot {
 					e.printStackTrace();
 				}
 				break;
-				
-			/*case "db":
-				List<Order> orders = new ArrayList<Order>();
-				try {
-					orders = database.findAllByClosed(null);
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-				if(!orders.isEmpty()) {
-					for(Order order: orders) {
-						String exchange = order.getExchange().append("\t") //не доделал!!!!!
-								.append(order.getQuantity()).append("\n");
-						System.out.println(exchange);
-						SendMessage messageOrders = new SendMessage().setChatId(chat_id).setText(exchange.toString());
-						try {
-							sendMessage(messageOrders); // Sending our message object to
-														// user
-						} catch (TelegramApiException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-				
-
-				break;*/
 
 			}
 		}
+	}
+
+
+	public void SendMessage (String message) {
+		SendMessage text = new SendMessage().setChatId(CHAT_ID).setText(message);
+		try {
+			sendMessage(text);
+		} catch (TelegramApiException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	@Override

@@ -129,7 +129,7 @@ public class DataBaseService {
 				ResultSet resultSet = statement.executeQuery(
 						"SELECT * FROM 'bittrex' WHERE closed='" + closedParam + "';");
 				orders = DataBaseUtility.convertResultSet2ListOrders(resultSet);
-				
+
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {

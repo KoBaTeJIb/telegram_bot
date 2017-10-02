@@ -1,5 +1,7 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 
+import org.telegram.telegrambots.api.methods.send.SendMessage;
+import org.telegram.telegrambots.api.objects.Update;
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
@@ -10,11 +12,17 @@ public class CheckOrdersService extends TimerTask {
 
     DataBaseService database = DataBaseService.getInstance();
     Bittrex wrapper = Bittrex.getINSTANCE();
+    TelegramBotService telegramBotService = TelegramBotService.getINSTANCE();
+
+    StringBuffer sendMessage = new StringBuffer();
 
 
     @Override
     public void run() {
         System.out.println("Timer Start");
+        sendMessage.append("Timer Start");
+        String message = sendMessage.toString();
+        telegramBotService.SendMessage(message);
         completeTask();
     }
 
@@ -63,16 +71,23 @@ public class CheckOrdersService extends TimerTask {
                 if (!ordersNew.isEmpty()) {
                     for (Order order : ordersNew) {
                         database.writeDb(order);
+                        sendMessage.append("Ордер ").append(order.getExchange()).append("\t")
+                                .append(order.getQuantity()).append("\t - добавлен в БД\n");
                         System.out.println("Ордер " + order.getExchange() + "\t" + order.getQuantity()
-                                + "\t - Добавлен в БД\n");
+                                + "\t - добавлен в БД\n");
+                        telegramBotService.SendMessage(sendMessage.toString());
+
                     }
                 }
 
                 if (!ordersDelete.isEmpty()) {
                     for (Order order : ordersDelete) {
                         database.uprdateDb(order.getOrderUuid(), "closed");
+                        sendMessage.append("Ордер ").append(order.getExchange()).append("\t")
+                                .append(order.getQuantity()).append("\t - закрыт\n");
                         System.out.println("Ордер " + order.getExchange() + "\t" + order.getQuantity()
                                 + "\t - Закрыт\n");
+                        telegramBotService.SendMessage(sendMessage.toString());
                     }
                 }
             }
