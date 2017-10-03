@@ -5,32 +5,35 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class Ticker implements Serializable{
-	private String Bid;
-	private String Ask;
-	private String Last;
+
+	private static final long serialVersionUID = 1L;
+
+	private String bid;
+	private String ask;
+	private String last;
 	
 	@SerializedName("Bid")
 	public String getBid() {
-		return Bid;
+		return bid;
 	}
 	public void setBid(String bid) {
-		this.Bid = bid;
+		this.bid = bid;
 	}
 	
 	@SerializedName("Ask")
 	public String getAsk() {
-		return Ask;
+		return ask;
 	}
 	public void setAsk(String ask) {
-		this.Ask = ask;
+		this.ask = ask;
 	}
 	
 	@SerializedName("Last")
 	public String getLast() {
-		return Last;
+		return last;
 	}
 	public void setLast(String last) {
-		this.Last = last;
+		this.last = last;
 	}
 	
 	

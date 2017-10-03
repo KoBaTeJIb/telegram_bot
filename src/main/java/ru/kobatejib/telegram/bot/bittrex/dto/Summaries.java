@@ -4,134 +4,152 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Summaries implements Serializable{
-	private String MarketName;
-	private String High;
-	private String Low;
-	private String Volume;
-	private String Last;
-	private String BaseVolume;
-	private String TimeStamp;
-	private String Bid;
-	private String Ask;
-	private String OpenBuyOrders;
-	private String OpenSellOrders;
-	private String PrevDay;
-	private String Created;
-	private String DisplayMarketName;
-	
+/**
+ * Created by Kovatelj
+ */
+public class Summaries implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private String marketName;
+	private String high;
+	private String low;
+	private String volume;
+	private String last;
+	private String baseVolume;
+	private String timeStamp;
+	private String bid;
+	private String ask;
+	private String openBuyOrders;
+	private String openSellOrders;
+	private String prevDay;
+	private String created;
+	private String displayMarketName;
+
 	@SerializedName("MarketName")
 	public String getMarketName() {
-		return MarketName;
+		return marketName;
 	}
+
 	public void setMarketName(String marketName) {
-		this.MarketName = marketName;
+		this.marketName = marketName;
 	}
-	
+
 	@SerializedName("High")
 	public String getHigh() {
-		return High;
+		return high;
 	}
+
 	public void setHigh(String high) {
-		this.High = high;
+		this.high = high;
 	}
-	
+
 	@SerializedName("Low")
 	public String getLow() {
-		return Low;
+		return low;
 	}
+
 	public void setLow(String low) {
-		this.Low = low;
+		this.low = low;
 	}
-	
+
 	@SerializedName("Volume")
 	public String getVolume() {
-		return Volume;
+		return volume;
 	}
+
 	public void setVolume(String volume) {
-		this.Volume = volume;
+		this.volume = volume;
 	}
-	
+
 	@SerializedName("Last")
 	public String getLast() {
-		return Last;
+		return last;
 	}
+
 	public void setLast(String last) {
-		this.Last = last;
+		this.last = last;
 	}
-	
+
 	@SerializedName("BaseVolume")
 	public String getBaseVolume() {
-		return BaseVolume;
+		return baseVolume;
 	}
+
 	public void setBaseVolume(String baseVolume) {
-		this.BaseVolume = baseVolume;
+		this.baseVolume = baseVolume;
 	}
-	
+
 	@SerializedName("TimeStamp")
 	public String getTimeStamp() {
-		return TimeStamp;
+		return timeStamp;
 	}
+
 	public void setTimeStamp(String timeStamp) {
-		this.TimeStamp = timeStamp;
+		this.timeStamp = timeStamp;
 	}
-	
+
 	@SerializedName("Bid")
 	public String getBid() {
-		return Bid;
+		return bid;
 	}
+
 	public void setBid(String bid) {
-		this.Bid = bid;
+		this.bid = bid;
 	}
-	
+
 	@SerializedName("Ask")
 	public String getAsk() {
-		return Ask;
+		return ask;
 	}
+
 	public void setAsk(String ask) {
-		this.Ask = ask;
+		this.ask = ask;
 	}
-	
+
 	@SerializedName("OpenBuyOrders")
 	public String getOpenBuyOrders() {
-		return OpenBuyOrders;
+		return openBuyOrders;
 	}
+
 	public void setOpenBuyOrders(String openBuyOrders) {
-		this.OpenBuyOrders = openBuyOrders;
+		this.openBuyOrders = openBuyOrders;
 	}
-	
+
 	@SerializedName("OpenSellOrders")
 	public String getOpenSellOrders() {
-		return OpenSellOrders;
+		return openSellOrders;
 	}
+
 	public void setOpenSellOrders(String openSellOrders) {
-		this.OpenSellOrders = openSellOrders;
+		this.openSellOrders = openSellOrders;
 	}
-	
+
 	@SerializedName("PrevDay")
 	public String getPrevDay() {
-		return PrevDay;
+		return prevDay;
 	}
+
 	public void setPrevDay(String prevDay) {
-		this.PrevDay = prevDay;
+		this.prevDay = prevDay;
 	}
-	
+
 	@SerializedName("Created")
 	public String getCreated() {
-		return Created;
+		return created;
 	}
+
 	public void setCreated(String created) {
-		this.Created = created;
+		this.created = created;
 	}
-	
+
 	@SerializedName("DisplayMarketName")
 	public String getDisplayMarketName() {
-		return DisplayMarketName;
+		return displayMarketName;
 	}
+
 	public void setDisplayMarketName(String displayMarketName) {
-		this.DisplayMarketName = displayMarketName;
+		this.displayMarketName = displayMarketName;
 	}
-	
-	
 
 }

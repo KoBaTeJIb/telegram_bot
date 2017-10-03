@@ -1,20 +1,23 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 
+/**
+ * Created by Kovatelj 
+ */
 import com.google.gson.*;
 
-import javassist.bytecode.stackmap.BasicBlock.Catch;
 import ru.kobatejib.telegram.bot.bittrex.dto.Summaries;
 import ru.kobatejib.telegram.bot.bittrex.dto.Ticker;
 
 public class ConvertJsonToObject {
-    public void summariesToObject (String response) {
-        Gson gson = new Gson();
-        Summaries summaries = gson.fromJson(response, Summaries.class);
- 
-    }
-    
-    public void ticketToObject(String response) {
+	public Summaries summariesToObject(String response) {
+		Gson gson = new Gson();
+		Summaries summaries = gson.fromJson(response, Summaries.class);
+		return summaries;
+	}
+
+	public Ticker ticketToObject(String response) {
 		Gson gson = new Gson();
 		Ticker ticker = gson.fromJson(response, Ticker.class);
-    }
+		return ticker;
+	}
 }
