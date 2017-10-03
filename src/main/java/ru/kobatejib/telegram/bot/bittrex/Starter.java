@@ -18,14 +18,14 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class Starter {
-	public static void main(String[] args) throws SQLException, ClassNotFoundException, InterruptedException  {
+	public static void main(String[] args) throws SQLException, ClassNotFoundException, InterruptedException {
 
 		ApiContextInitializer.init();
 
 		TelegramBotsApi botsApi = new TelegramBotsApi();
 		DataBaseService db = DataBaseService.getInstance();
 		try {
-			TelegramBotService tb =  new TelegramBotService();
+			TelegramBotService tb = new TelegramBotService();
 			tb.setDatabase(db);
 			botsApi.registerBot(tb);
 		} catch (TelegramApiRequestException e) {
@@ -35,15 +35,13 @@ public class Starter {
 		db.connect();
 		db.createDb();
 
-
 		TimerTask timerTask = new CheckOrdersService();
 		// стартуем TimerTask в виде демона
 
 		Timer timer = new Timer(true);
 		// будем запускать каждых 10 секунд (10 * 1000 миллисекунд)
-		timer.scheduleAtFixedRate(timerTask, 0, 60*1000);
+		timer.scheduleAtFixedRate(timerTask, 0, 60 * 1000);
 		System.out.println("TimerTask начал выполнение");
 	}
 
-		
 }
