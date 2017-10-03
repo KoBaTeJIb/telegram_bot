@@ -1,7 +1,5 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 
-import org.telegram.telegrambots.api.methods.send.SendMessage;
-import org.telegram.telegrambots.api.objects.Update;
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
@@ -82,7 +80,7 @@ public class CheckOrdersService extends TimerTask {
 
                 if (!ordersDelete.isEmpty()) {
                     for (Order order : ordersDelete) {
-                        database.uprdateDb(order.getOrderUuid(), "closed");
+                        database.updateDb(order.getOrderUuid(), "closed");
                         sendMessage.append("Ордер ").append(order.getExchange()).append("\t")
                                 .append(order.getQuantity()).append("\t - закрыт\n");
                         System.out.println("Ордер " + order.getExchange() + "\t" + order.getQuantity()

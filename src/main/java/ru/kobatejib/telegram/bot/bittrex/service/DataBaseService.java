@@ -95,7 +95,7 @@ public class DataBaseService {
 	}
 
 
-	public void uprdateDb(String uuid, String closed)
+	public void updateDb(String uuid, String closed)
 			throws ClassNotFoundException, SQLException {
 		if (connection != null) {
 			Statement statement = null;

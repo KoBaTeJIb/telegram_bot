@@ -54,6 +54,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 			switch (message_text) {
 			case "balances":
 				String otherRawResponse = wrapper.getBalances();
+				String summariesResponse = wrapper.getMarketSummaries();
 				List<Map<String, String>> allBalancesMapList = Bittrex.getMapsFromResponse(otherRawResponse);
 				for (int i = 0; i < allBalancesMapList.size(); i++) {
 					if (!allBalancesMapList.get(i).get("Balance").equals("0.00000000")) {
