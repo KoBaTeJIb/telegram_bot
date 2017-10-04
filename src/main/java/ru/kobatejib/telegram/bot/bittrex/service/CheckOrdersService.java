@@ -18,9 +18,9 @@ public class CheckOrdersService extends TimerTask {
     @Override
     public void run() {
         System.out.println("Timer Start");
-        sendMessage.append("Timer Start");
-        String message = sendMessage.toString();
-        telegramBotService.SendMessage(message);
+        //sendMessage.append("Timer Start");
+        //String message = sendMessage.toString();
+        //telegramBotService.SendMessage(message);
         completeTask();
     }
 

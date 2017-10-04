@@ -12,6 +12,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 
+import ru.kobatejib.telegram.bot.bittrex.dto.Summaries;
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
@@ -36,6 +37,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 
 	DataBaseService database = DataBaseService.getInstance();
+	ConvertJsonToObject convertJsonToObject = ConvertJsonToObject.getINSTANCE();
 
 	@Override
 	public void onUpdateReceived(Update update) {
@@ -63,6 +65,11 @@ public class TelegramBotService extends TelegramLongPollingBot {
 								//.append(allBalancesMapList.get(i).get(""))
 
 					}
+				}
+				List<Summaries> summaries = convertJsonToObject.summariesToObject(summariesResponse);
+
+				for (int i = 0; i < summaries.size(); i++) {
+					System.out.println(summaries.get(i).getDisplayMarketName());
 				}
 				SendMessage messageBalances = new SendMessage().setChatId(CHAT_ID).setText(message_send.toString());
 
