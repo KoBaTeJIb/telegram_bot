@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
- * DTO for Summary
+ * DTO класс отчет от bittrex
  * 
  * @author <a href="mailto:onixbed@gmail.com">amaksimov</a>
  */
@@ -61,7 +61,6 @@ public class Summary implements Serializable {
 		this.high = high;
 	}
 
-
 	public String getLow() {
 		return low;
 	}
@@ -69,7 +68,6 @@ public class Summary implements Serializable {
 	public void setLow(String low) {
 		this.low = low;
 	}
-
 
 	public String getVolume() {
 		return volume;
@@ -79,7 +77,6 @@ public class Summary implements Serializable {
 		this.volume = volume;
 	}
 
-
 	public String getLast() {
 		return last;
 	}
@@ -87,7 +84,6 @@ public class Summary implements Serializable {
 	public void setLast(String last) {
 		this.last = last;
 	}
-
 
 	public String getBaseVolume() {
 		return baseVolume;
@@ -105,7 +101,6 @@ public class Summary implements Serializable {
 		this.timeStamp = timeStamp;
 	}
 
-
 	public String getBid() {
 		return bid;
 	}
@@ -114,7 +109,6 @@ public class Summary implements Serializable {
 		this.bid = bid;
 	}
 
-
 	public String getAsk() {
 		return ask;
 	}
@@ -122,7 +116,6 @@ public class Summary implements Serializable {
 	public void setAsk(String ask) {
 		this.ask = ask;
 	}
-
 
 	public String getOpenBuyOrders() {
 		return openBuyOrders;
@@ -166,7 +159,64 @@ public class Summary implements Serializable {
 
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this,
-				ToStringStyle.SHORT_PREFIX_STYLE);
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + marketName.hashCode();
+		result = prime * result + high.hashCode();
+		result = prime * result + low.hashCode();
+		result = prime * result + volume.hashCode();
+		result = prime * result + last.hashCode();
+		result = prime * result + baseVolume.hashCode();
+		result = prime * result + timeStamp.hashCode();
+		result = prime * result + bid.hashCode();
+		result = prime * result + ask.hashCode();
+		result = prime * result + openBuyOrders.hashCode();
+		result = prime * result + openSellOrders.hashCode();
+		result = prime * result + prevDay.hashCode();
+		result = prime * result + created.hashCode();
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Summary other = (Summary) obj;
+		if (!marketName.equals(other.marketName))
+			return false;
+		if (!high.equals(other.high))
+			return false;
+		if (!low.equals(other.low))
+			return false;
+		if (!volume.equals(other.volume))
+			return false;
+		if (!last.equals(other.last))
+			return false;
+		if (!baseVolume.equals(other.baseVolume))
+			return false;
+		if (!timeStamp.equals(other.timeStamp))
+			return false;
+		if (!bid.equals(other.bid))
+			return false;
+		if (!ask.equals(other.ask))
+			return false;
+		if (!openBuyOrders.equals(other.openBuyOrders))
+			return false;
+		if (!openSellOrders.equals(other.openSellOrders))
+			return false;
+		if (!prevDay.equals(other.prevDay))
+			return false;
+		if (!created.equals(other.created))
+			return false;
+		return true;
 	}
 }

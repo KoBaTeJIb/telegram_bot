@@ -1,20 +1,19 @@
 package ru.kobatejib.telegram.bot.bittrex.dto;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.google.gson.annotations.SerializedName;
 
+
 /**
- * Base class Response. First use for Summaries
+ * DTO обертка для ответа от bittrex
  * 
  * @author <a href="mailto:onixbed@gmail.com">amaksimov</a>
  */
-public class Response implements Serializable {
+public class Response<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,7 +22,7 @@ public class Response implements Serializable {
 	@SerializedName("message")
 	private String message;
 	@SerializedName("result")
-	private List<Summary> summaries = new ArrayList<Summary>();
+	private T result;
 
 	public Boolean getSuccess() {
 		return success;
@@ -41,12 +40,12 @@ public class Response implements Serializable {
 		this.message = message;
 	}
 
-	public List<Summary> getSummaries() {
-		return summaries;
+	public T getResult() {
+		return result;
 	}
 
-	public void setSummaries(List<Summary> summaries) {
-		this.summaries = summaries;
+	public void setResult(T result) {
+		this.result = result;
 	}
 
 	@Override
