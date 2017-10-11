@@ -8,7 +8,7 @@ import com.google.gson.*;
 
 
 import ru.kobatejib.telegram.bot.bittrex.dto.Response;
-import ru.kobatejib.telegram.bot.bittrex.dto.Summary;
+import ru.kobatejib.telegram.bot.bittrex.dto.Summaries;
 import ru.kobatejib.telegram.bot.bittrex.dto.Ticker;
 
 import java.util.Arrays;
@@ -36,16 +36,16 @@ public class JsonService {
 		return ticker;
 	}
 
-	public HashMap<String, Summary> summariesToObject(String response) {
+	public HashMap<String, Summaries> summariesToObject(String response) {
 		System.out.println(response);
 		Gson gson = new Gson();
-		HashMap<String, Summary> summariesMap = new HashMap<>();
+		HashMap<String, Summaries> summariesMap = new HashMap<>();
 		Response responseSummaries = gson.fromJson(response, Response.class);
 		
-		List<Summary> summaries = responseSummaries.getSummaries();
+		List<Summaries> summaries = responseSummaries.getSummaries();
 		System.out.println(Arrays.toString(summaries.toArray()));
 		if(summaries != null) {
-			for (Summary summary: summaries) {
+			for (Summaries summary: summaries) {
 				summariesMap.put(summary.getMarketName(), summary);
 			}
 		}

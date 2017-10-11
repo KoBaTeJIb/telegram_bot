@@ -23,7 +23,7 @@ public class Response implements Serializable {
 	@SerializedName("message")
 	private String message;
 	@SerializedName("result")
-	private List<Summary> summaries = new ArrayList<Summary>();
+	private List<Summaries> summaries = new ArrayList<Summaries>();
 
 	public Boolean getSuccess() {
 		return success;
@@ -41,11 +41,11 @@ public class Response implements Serializable {
 		this.message = message;
 	}
 
-	public List<Summary> getSummaries() {
+	public List<Summaries> getSummaries() {
 		return summaries;
 	}
 
-	public void setSummaries(List<Summary> summaries) {
+	public void setSummaries(List<Summaries> summaries) {
 		this.summaries = summaries;
 	}
 

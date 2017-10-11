@@ -12,38 +12,37 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * 
  * @author <a href="mailto:onixbed@gmail.com">amaksimov</a>
  */
-public class Summary implements Serializable {
+public class Summaries implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@SerializedName("MarketName")
 	private String marketName;
 	@SerializedName("High")
-	private String high;
+	private Double high;
 	@SerializedName("Low")
-	private String low;
+	private Double low;
 	@SerializedName("Volume")
-	private String volume;
+	private Double volume;
 	@SerializedName("Last")
-	private String last;
+	private Double last;
 	@SerializedName("BaseVolume")
-	private String baseVolume;
+	private Double baseVolume;
 	@SerializedName("TimeStamp")
 	private String timeStamp;
 	@SerializedName("Bid")
-	private String bid;
+	private Double bid;
 	@SerializedName("Ask")
-	private String ask;
+	private Double ask;
 	@SerializedName("OpenBuyOrders")
-	private String openBuyOrders;
+	private int openBuyOrders;
 	@SerializedName("OpenSellOrders")
-	private String openSellOrders;
+	private int openSellOrders;
 	@SerializedName("PrevDay")
-	private String prevDay;
+	private Double prevDay;
 	@SerializedName("Created")
 	private String created;
-	@SerializedName("DisplayMarketName")
-	private String displayMarketName;
+
 
 	public String getMarketName() {
 		return marketName;
@@ -53,47 +52,47 @@ public class Summary implements Serializable {
 		this.marketName = marketName;
 	}
 
-	public String getHigh() {
+	public Double getHigh() {
 		return high;
 	}
 
-	public void setHigh(String high) {
+	public void setHigh(Double high) {
 		this.high = high;
 	}
 
 
-	public String getLow() {
+	public Double getLow() {
 		return low;
 	}
 
-	public void setLow(String low) {
+	public void setLow(Double low) {
 		this.low = low;
 	}
 
 
-	public String getVolume() {
+	public Double getVolume() {
 		return volume;
 	}
 
-	public void setVolume(String volume) {
+	public void setVolume(Double volume) {
 		this.volume = volume;
 	}
 
 
-	public String getLast() {
+	public Double getLast() {
 		return last;
 	}
 
-	public void setLast(String last) {
+	public void setLast(Double last) {
 		this.last = last;
 	}
 
 
-	public String getBaseVolume() {
+	public Double getBaseVolume() {
 		return baseVolume;
 	}
 
-	public void setBaseVolume(String baseVolume) {
+	public void setBaseVolume(Double baseVolume) {
 		this.baseVolume = baseVolume;
 	}
 
@@ -106,45 +105,45 @@ public class Summary implements Serializable {
 	}
 
 
-	public String getBid() {
+	public Double getBid() {
 		return bid;
 	}
 
-	public void setBid(String bid) {
+	public void setBid(Double bid) {
 		this.bid = bid;
 	}
 
 
-	public String getAsk() {
+	public Double getAsk() {
 		return ask;
 	}
 
-	public void setAsk(String ask) {
+	public void setAsk(Double ask) {
 		this.ask = ask;
 	}
 
 
-	public String getOpenBuyOrders() {
+	public int getOpenBuyOrders() {
 		return openBuyOrders;
 	}
 
-	public void setOpenBuyOrders(String openBuyOrders) {
+	public void setOpenBuyOrders(int openBuyOrders) {
 		this.openBuyOrders = openBuyOrders;
 	}
 
-	public String getOpenSellOrders() {
+	public int getOpenSellOrders() {
 		return openSellOrders;
 	}
 
-	public void setOpenSellOrders(String openSellOrders) {
+	public void setOpenSellOrders(int openSellOrders) {
 		this.openSellOrders = openSellOrders;
 	}
 
-	public String getPrevDay() {
+	public Double getPrevDay() {
 		return prevDay;
 	}
 
-	public void setPrevDay(String prevDay) {
+	public void setPrevDay(Double prevDay) {
 		this.prevDay = prevDay;
 	}
 
@@ -156,13 +155,7 @@ public class Summary implements Serializable {
 		this.created = created;
 	}
 
-	public String getDisplayMarketName() {
-		return displayMarketName;
-	}
 
-	public void setDisplayMarketName(String displayMarketName) {
-		this.displayMarketName = displayMarketName;
-	}
 
 	@Override
 	public String toString() {
