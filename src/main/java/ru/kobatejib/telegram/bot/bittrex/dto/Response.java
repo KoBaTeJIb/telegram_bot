@@ -2,6 +2,9 @@ package ru.kobatejib.telegram.bot.bittrex.dto;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -42,5 +45,11 @@ public class Response implements Serializable {
 
 	public void setSummaries(Summary[] summaries) {
 		this.summaries = summaries;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this,
+				ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 }
