@@ -6,24 +6,24 @@ package ru.kobatejib.telegram.bot.bittrex.service;
 import com.google.gson.*;
 
 import com.google.gson.reflect.TypeToken;
-import org.omg.CORBA.Object;
 import ru.kobatejib.telegram.bot.bittrex.dto.Summaries;
 import ru.kobatejib.telegram.bot.bittrex.dto.Ticker;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 
-public class ConvertJsonToObject {
+public class JsonService {
 
-	public static ConvertJsonToObject getINSTANCE() {
+	public static JsonService getINSTANCE() {
 		return INSTANCE;
 	}
 
-	public static void setINSTANCE(ConvertJsonToObject INSTANCE) {
-		ConvertJsonToObject.INSTANCE = INSTANCE;
+	public static void setINSTANCE(JsonService INSTANCE) {
+		JsonService.INSTANCE = INSTANCE;
 	}
 
-	public static ConvertJsonToObject INSTANCE = new ConvertJsonToObject();
+	public static JsonService INSTANCE = new JsonService();
 
 
 
@@ -34,11 +34,13 @@ public class ConvertJsonToObject {
 	}
 
 	public List<Summaries> summariesToObject(String response) {
+		System.out.println(response);
 		Gson gson = new Gson();
 		HashMap<String, Summaries> summariesMap = new HashMap<>();
-		List<Summaries> summaries = gson.fromJson(response, new TypeToken<List<Summaries>>(){}.getType());
-		for (int i = 0; i < summaries.size(); i++) {
-			summariesMap.put(summaries.get(i).getMarketName(), summaries.get(i));
+		//List<Summaries> summaries = gson.fromJson(response, new TypeToken<List<Summaries>>(){}.getType());
+		Summaries summaries = gson.fromJson(response, Summaries.class);
+		for (int i = 0; i < summaries.getResult().length; i++) {
+			summariesMap.put(summaries.getResult()[i]., summaries.getResult()[i]);
 		}
 		return summaries;
 	}

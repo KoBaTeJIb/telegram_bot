@@ -37,7 +37,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 
 	DataBaseService database = DataBaseService.getInstance();
-	ConvertJsonToObject convertJsonToObject = ConvertJsonToObject.getINSTANCE();
+	JsonService jsonService = JsonService.getINSTANCE();
 
 	@Override
 	public void onUpdateReceived(Update update) {
@@ -66,7 +66,7 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 					}
 				}
-				List<Summaries> summaries = convertJsonToObject.summariesToObject(summariesResponse);
+				List<Summaries> summaries = jsonService.summariesToObject(summariesResponse);
 
 				for (int i = 0; i < summaries.size(); i++) {
 					System.out.println(summaries.get(i).getDisplayMarketName());
