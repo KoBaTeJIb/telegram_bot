@@ -16,22 +16,35 @@ public class Summary implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@SerializedName("MarketName")
 	private String marketName;
+	@SerializedName("High")
 	private String high;
+	@SerializedName("Low")
 	private String low;
+	@SerializedName("Volume")
 	private String volume;
+	@SerializedName("Last")
 	private String last;
+	@SerializedName("BaseVolume")
 	private String baseVolume;
+	@SerializedName("TimeStamp")
 	private String timeStamp;
+	@SerializedName("Bid")
 	private String bid;
+	@SerializedName("Ask")
 	private String ask;
+	@SerializedName("OpenBuyOrders")
 	private String openBuyOrders;
+	@SerializedName("OpenSellOrders")
 	private String openSellOrders;
+	@SerializedName("PrevDay")
 	private String prevDay;
+	@SerializedName("Created")
 	private String created;
+	@SerializedName("DisplayMarketName")
 	private String displayMarketName;
 
-	@SerializedName("MarketName")
 	public String getMarketName() {
 		return marketName;
 	}
@@ -40,7 +53,6 @@ public class Summary implements Serializable {
 		this.marketName = marketName;
 	}
 
-	@SerializedName("High")
 	public String getHigh() {
 		return high;
 	}
@@ -49,7 +61,7 @@ public class Summary implements Serializable {
 		this.high = high;
 	}
 
-	@SerializedName("Low")
+
 	public String getLow() {
 		return low;
 	}
@@ -58,7 +70,7 @@ public class Summary implements Serializable {
 		this.low = low;
 	}
 
-	@SerializedName("Volume")
+
 	public String getVolume() {
 		return volume;
 	}
@@ -67,7 +79,7 @@ public class Summary implements Serializable {
 		this.volume = volume;
 	}
 
-	@SerializedName("Last")
+
 	public String getLast() {
 		return last;
 	}
@@ -76,7 +88,7 @@ public class Summary implements Serializable {
 		this.last = last;
 	}
 
-	@SerializedName("BaseVolume")
+
 	public String getBaseVolume() {
 		return baseVolume;
 	}
@@ -85,7 +97,6 @@ public class Summary implements Serializable {
 		this.baseVolume = baseVolume;
 	}
 
-	@SerializedName("TimeStamp")
 	public String getTimeStamp() {
 		return timeStamp;
 	}
@@ -94,7 +105,7 @@ public class Summary implements Serializable {
 		this.timeStamp = timeStamp;
 	}
 
-	@SerializedName("Bid")
+
 	public String getBid() {
 		return bid;
 	}
@@ -103,7 +114,7 @@ public class Summary implements Serializable {
 		this.bid = bid;
 	}
 
-	@SerializedName("Ask")
+
 	public String getAsk() {
 		return ask;
 	}
@@ -112,7 +123,7 @@ public class Summary implements Serializable {
 		this.ask = ask;
 	}
 
-	@SerializedName("OpenBuyOrders")
+
 	public String getOpenBuyOrders() {
 		return openBuyOrders;
 	}
@@ -121,7 +132,6 @@ public class Summary implements Serializable {
 		this.openBuyOrders = openBuyOrders;
 	}
 
-	@SerializedName("OpenSellOrders")
 	public String getOpenSellOrders() {
 		return openSellOrders;
 	}
@@ -130,7 +140,6 @@ public class Summary implements Serializable {
 		this.openSellOrders = openSellOrders;
 	}
 
-	@SerializedName("PrevDay")
 	public String getPrevDay() {
 		return prevDay;
 	}
@@ -139,7 +148,6 @@ public class Summary implements Serializable {
 		this.prevDay = prevDay;
 	}
 
-	@SerializedName("Created")
 	public String getCreated() {
 		return created;
 	}
@@ -148,7 +156,6 @@ public class Summary implements Serializable {
 		this.created = created;
 	}
 
-	@SerializedName("DisplayMarketName")
 	public String getDisplayMarketName() {
 		return displayMarketName;
 	}

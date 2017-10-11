@@ -18,11 +18,13 @@ public class Response implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Boolean success;
-	private String message;
-	private List<Summary> summaries = new ArrayList<Summary>();;
-
 	@SerializedName("success")
+	private Boolean success;
+	@SerializedName("message")
+	private String message;
+	@SerializedName("result")
+	private List<Summary> summaries = new ArrayList<Summary>();
+
 	public Boolean getSuccess() {
 		return success;
 	}
@@ -31,7 +33,6 @@ public class Response implements Serializable {
 		this.success = success;
 	}
 
-	@SerializedName("message")
 	public String getMessage() {
 		return message;
 	}
@@ -40,7 +41,6 @@ public class Response implements Serializable {
 		this.message = message;
 	}
 
-	@SerializedName("result")
 	public List<Summary> getSummaries() {
 		return summaries;
 	}
