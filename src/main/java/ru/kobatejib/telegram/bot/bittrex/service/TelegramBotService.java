@@ -1,6 +1,6 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 /**
- * Created by Sazonovs on 06.07.2017.
+ * Created by Kovatelj on 06.07.2017.
  */
 
 
@@ -17,7 +17,6 @@ import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,11 +65,13 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 					}
 				}
-				HashMap<String, Summary> name2Summary = jsonService.summariesToObject(summariesResponse);
+				Map<String, Summary> name2Summary = jsonService.summariesToObject(summariesResponse);
 
-				for (String ketName:  name2Summary.keySet()) {
-					System.out.println(name2Summary.get(ketName).getDisplayMarketName());
+				for (String keyName:  name2Summary.keySet()) {
+					System.out.println(keyName + "\t");
+					System.out.printf("%f%n", name2Summary.get(keyName).getLast());
 				}
+
 				SendMessage messageBalances = new SendMessage().setChatId(CHAT_ID).setText(message_send.toString());
 
 				try {

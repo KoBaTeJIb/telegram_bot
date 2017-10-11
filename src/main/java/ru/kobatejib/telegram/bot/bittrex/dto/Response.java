@@ -24,6 +24,7 @@ public class Response<T> implements Serializable {
 	@SerializedName("result")
 	private T result;
 
+
 	public Boolean getSuccess() {
 		return success;
 	}
@@ -42,6 +43,7 @@ public class Response<T> implements Serializable {
 
 	public T getResult() {
 		return result;
+
 	}
 
 	public void setResult(T result) {

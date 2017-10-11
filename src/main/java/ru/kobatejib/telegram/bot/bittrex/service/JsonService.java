@@ -14,6 +14,7 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class JsonService {
 
@@ -33,17 +34,19 @@ public class JsonService {
 		return ticker;
 	}
 
-	public HashMap<String, Summary> summariesToObject(String response) {
-		System.out.println(response);
-		Gson gson = new Gson();
-		HashMap<String, Summary> summariesMap = new HashMap<>();
+	public Map<String, Summary> summariesToObject(String response) {
+		System.out.println("response: " + response);
+
+		Map<String, Summary> summariesMap = new HashMap<>();
 		Type listType = new TypeToken<Response<List<Summary>>>() {
 		}.getType();
+		Gson gson = new Gson();
 		Response<List<Summary>> responseSummaries = gson.fromJson(response, listType);
 
 		List<Summary> summaries = responseSummaries.getResult();
 
 		System.out.println(Arrays.toString(summaries.toArray()));
+
 		if (summaries != null) {
 			for (Summary summary : summaries) {
 				summariesMap.put(summary.getMarketName(), summary);
