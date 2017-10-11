@@ -40,17 +40,15 @@ public class JsonService {
 		System.out.println(response);
 		Gson gson = new Gson();
 		HashMap<String, Summary> summariesMap = new HashMap<>();
-		//List<Summaries> summaries = gson.fromJson(response, new TypeToken<List<Summaries>>(){}.getType());
 		Response responseSummaries = gson.fromJson(response, Response.class);
 		
 		List<Summary> summaries = responseSummaries.getSummaries();
 		System.out.println(Arrays.toString(summaries.toArray()));
 		if(summaries != null) {
-			for (int i = 0; i < summaries.size(); i++) {
-				summariesMap.put(summaries.get(i).getMarketName(), summaries.get(i));
+			for (Summary summary: summaries) {
+				summariesMap.put(summary.getMarketName(), summary);
 			}
-		} 
-		
+		}
 		return summariesMap;
 	}
 
