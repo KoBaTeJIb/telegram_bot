@@ -11,7 +11,9 @@ import ru.kobatejib.telegram.bot.bittrex.dto.Response;
 import ru.kobatejib.telegram.bot.bittrex.dto.Summary;
 import ru.kobatejib.telegram.bot.bittrex.dto.Ticker;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class JsonService {
@@ -40,10 +42,12 @@ public class JsonService {
 		HashMap<String, Summary> summariesMap = new HashMap<>();
 		//List<Summaries> summaries = gson.fromJson(response, new TypeToken<List<Summaries>>(){}.getType());
 		Response responseSummaries = gson.fromJson(response, Response.class);
-		Summary[] summaries = responseSummaries.getSummaries();
+		
+		List<Summary> summaries = responseSummaries.getSummaries();
+		System.out.println(Arrays.toString(summaries.toArray()));
 		if(summaries != null) {
-			for (int i = 0; i < summaries.length; i++) {
-				summariesMap.put(summaries[i].getMarketName(), summaries[i]);
+			for (int i = 0; i < summaries.size(); i++) {
+				summariesMap.put(summaries.get(i).getMarketName(), summaries.get(i));
 			}
 		} 
 		

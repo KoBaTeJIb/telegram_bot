@@ -1,6 +1,8 @@
 package ru.kobatejib.telegram.bot.bittrex.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -18,7 +20,7 @@ public class Response implements Serializable {
 
 	private Boolean success;
 	private String message;
-	private Summary[] summaries;
+	private List<Summary> summaries = new ArrayList<Summary>();;
 
 	@SerializedName("success")
 	public Boolean getSuccess() {
@@ -39,11 +41,11 @@ public class Response implements Serializable {
 	}
 
 	@SerializedName("result")
-	public Summary[] getSummaries() {
+	public List<Summary> getSummaries() {
 		return summaries;
 	}
 
-	public void setSummaries(Summary[] summaries) {
+	public void setSummaries(List<Summary> summaries) {
 		this.summaries = summaries;
 	}
 
