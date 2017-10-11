@@ -12,12 +12,12 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 
-import ru.kobatejib.telegram.bot.bittrex.dto.Summaries;
+import ru.kobatejib.telegram.bot.bittrex.dto.Summary;
 import ru.kobatejib.telegram.bot.bittrex.entyte.Order;
 import ru.kobatejib.telegram.bot.bittrex.utility.DataBaseUtility;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -66,10 +66,10 @@ public class TelegramBotService extends TelegramLongPollingBot {
 
 					}
 				}
-				List<Summaries> summaries = jsonService.summariesToObject(summariesResponse);
+				HashMap<String, Summary> name2Summary = jsonService.summariesToObject(summariesResponse);
 
-				for (int i = 0; i < summaries.size(); i++) {
-					System.out.println(summaries.get(i).getDisplayMarketName());
+				for (String ketName:  name2Summary.keySet()) {
+					System.out.println(name2Summary.get(ketName).getDisplayMarketName());
 				}
 				SendMessage messageBalances = new SendMessage().setChatId(CHAT_ID).setText(message_send.toString());
 

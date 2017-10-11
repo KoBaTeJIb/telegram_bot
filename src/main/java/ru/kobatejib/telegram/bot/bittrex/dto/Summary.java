@@ -3,20 +3,16 @@ package ru.kobatejib.telegram.bot.bittrex.dto;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 
 /**
- * Created by Kovatelj
+ * DTO for Summary
+ * 
+ * @author <a href="mailto:onixbed@gmail.com">amaksimov</a>
  */
-public class Summaries implements Serializable {
+public class Summary implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-
-
-	private Boolean success;
-	private String message;
-	private String result[];
 	private String marketName;
 	private String high;
 	private String low;
@@ -31,31 +27,6 @@ public class Summaries implements Serializable {
 	private String prevDay;
 	private String created;
 	private String displayMarketName;
-
-	@SerializedName("success")
-	public Boolean getSuccess() {
-		return success;
-	}
-	public void setSuccess(Boolean success) {
-		this.success = success;
-	}
-
-	@SerializedName("message")
-	public String getMessage() {
-		return message;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	@SerializedName("result")
-	public String[] getResult() {
-		return result;
-	}
-
-	public void setResult(String[] result) {
-		this.result = result;
-	}
 
 	@SerializedName("MarketName")
 	public String getMarketName() {
