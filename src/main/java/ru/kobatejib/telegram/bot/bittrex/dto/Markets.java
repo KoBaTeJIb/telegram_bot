@@ -27,7 +27,7 @@ public class Markets implements Serializable{
     private String BaseCurrencyLong;
 
     @SerializedName("MinTradeSize")
-    private Double MinTradeSize;
+    private Float MinTradeSize;
 
     @SerializedName("MarketName")
     private String MarketName;
@@ -80,11 +80,11 @@ public class Markets implements Serializable{
         this.BaseCurrencyLong = baseCurrencyLong;
     }
 
-    public Double getMinTradeSize() {
+    public Float getMinTradeSize() {
         return MinTradeSize;
     }
 
-    public void setMinTradeSize(Double minTradeSize) {
+    public void setMinTradeSize(Float minTradeSize) {
         this.MinTradeSize = minTradeSize;
     }
 

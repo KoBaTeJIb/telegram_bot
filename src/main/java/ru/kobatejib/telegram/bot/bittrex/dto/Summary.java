@@ -19,31 +19,29 @@ public class Summary implements Serializable {
 	@SerializedName("MarketName")
 	private String marketName;
 	@SerializedName("High")
-	private String high;
+	private Float high;
 	@SerializedName("Low")
-	private String low;
+	private Float low;
 	@SerializedName("Volume")
-	private String volume;
+	private Float volume;
 	@SerializedName("Last")
-	private String last;
+	private Float last;
 	@SerializedName("BaseVolume")
-	private String baseVolume;
+	private Float baseVolume;
 	@SerializedName("TimeStamp")
 	private String timeStamp;
 	@SerializedName("Bid")
-	private String bid;
+	private Float bid;
 	@SerializedName("Ask")
-	private String ask;
+	private Float ask;
 	@SerializedName("OpenBuyOrders")
-	private String openBuyOrders;
+	private Integer openBuyOrders;
 	@SerializedName("OpenSellOrders")
-	private String openSellOrders;
+	private Integer openSellOrders;
 	@SerializedName("PrevDay")
-	private String prevDay;
+	private Float prevDay;
 	@SerializedName("Created")
 	private String created;
-	@SerializedName("DisplayMarketName")
-	private String displayMarketName;
 
 	public String getMarketName() {
 		return marketName;
@@ -53,43 +51,43 @@ public class Summary implements Serializable {
 		this.marketName = marketName;
 	}
 
-	public String getHigh() {
+	public Float getHigh() {
 		return high;
 	}
 
-	public void setHigh(String high) {
+	public void setHigh(Float high) {
 		this.high = high;
 	}
 
-	public String getLow() {
+	public Float getLow() {
 		return low;
 	}
 
-	public void setLow(String low) {
+	public void setLow(Float low) {
 		this.low = low;
 	}
 
-	public String getVolume() {
+	public Float getVolume() {
 		return volume;
 	}
 
-	public void setVolume(String volume) {
+	public void setVolume(Float volume) {
 		this.volume = volume;
 	}
 
-	public String getLast() {
+	public Float getLast() {
 		return last;
 	}
 
-	public void setLast(String last) {
+	public void setLast(Float last) {
 		this.last = last;
 	}
 
-	public String getBaseVolume() {
+	public Float getBaseVolume() {
 		return baseVolume;
 	}
 
-	public void setBaseVolume(String baseVolume) {
+	public void setBaseVolume(Float baseVolume) {
 		this.baseVolume = baseVolume;
 	}
 
@@ -101,43 +99,43 @@ public class Summary implements Serializable {
 		this.timeStamp = timeStamp;
 	}
 
-	public String getBid() {
+	public Float getBid() {
 		return bid;
 	}
 
-	public void setBid(String bid) {
+	public void setBid(Float bid) {
 		this.bid = bid;
 	}
 
-	public String getAsk() {
+	public Float getAsk() {
 		return ask;
 	}
 
-	public void setAsk(String ask) {
+	public void setAsk(Float ask) {
 		this.ask = ask;
 	}
 
-	public String getOpenBuyOrders() {
+	public Integer getOpenBuyOrders() {
 		return openBuyOrders;
 	}
 
-	public void setOpenBuyOrders(String openBuyOrders) {
+	public void setOpenBuyOrders(Integer openBuyOrders) {
 		this.openBuyOrders = openBuyOrders;
 	}
 
-	public String getOpenSellOrders() {
+	public Integer getOpenSellOrders() {
 		return openSellOrders;
 	}
 
-	public void setOpenSellOrders(String openSellOrders) {
+	public void setOpenSellOrders(Integer openSellOrders) {
 		this.openSellOrders = openSellOrders;
 	}
 
-	public String getPrevDay() {
+	public Float getPrevDay() {
 		return prevDay;
 	}
 
-	public void setPrevDay(String prevDay) {
+	public void setPrevDay(Float prevDay) {
 		this.prevDay = prevDay;
 	}
 
@@ -149,13 +147,6 @@ public class Summary implements Serializable {
 		this.created = created;
 	}
 
-	public String getDisplayMarketName() {
-		return displayMarketName;
-	}
-
-	public void setDisplayMarketName(String displayMarketName) {
-		this.displayMarketName = displayMarketName;
-	}
 
 	@Override
 	public String toString() {

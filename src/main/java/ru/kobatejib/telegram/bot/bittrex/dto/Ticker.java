@@ -19,33 +19,33 @@ public class Ticker implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@SerializedName("Bid")
-	private String bid;
+	private Float bid;
 	@SerializedName("Ask")
-	private String ask;
+	private Float ask;
 	@SerializedName("Last")
-	private String last;
+	private Float last;
 
-	public String getBid() {
+	public Float getBid() {
 		return bid;
 	}
 
-	public void setBid(String bid) {
+	public void setBid(Float bid) {
 		this.bid = bid;
 	}
 
-	public String getAsk() {
+	public Float getAsk() {
 		return ask;
 	}
 
-	public void setAsk(String ask) {
+	public void setAsk(Float ask) {
 		this.ask = ask;
 	}
 
-	public String getLast() {
+	public Float getLast() {
 		return last;
 	}
 
-	public void setLast(String last) {
+	public void setLast(Float last) {
 		this.last = last;
 	}
 

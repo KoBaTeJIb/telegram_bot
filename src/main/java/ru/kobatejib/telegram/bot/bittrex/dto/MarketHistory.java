@@ -14,19 +14,19 @@ public class MarketHistory implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @SerializedName("Id")
-    private int Id;
+    private Integer Id;
 
     @SerializedName("TimeStamp")
     private String TimeStamp;
 
     @SerializedName("Quantity")
-    private Double Quantity;
+    private Float Quantity;
 
     @SerializedName("Price")
-    private Double Price;
+    private Float Price;
 
     @SerializedName("Total")
-    private Double Total;
+    private Float Total;
 
     @SerializedName("FillType")
     private String FillType;
@@ -36,11 +36,11 @@ public class MarketHistory implements Serializable{
 
 
 
-    public int getId() {
+    public Integer getId() {
         return Id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.Id = id;
     }
 
@@ -52,27 +52,27 @@ public class MarketHistory implements Serializable{
         this.TimeStamp = timeStamp;
     }
 
-    public Double getQuantity() {
+    public Float getQuantity() {
         return Quantity;
     }
 
-    public void setQuantity(Double quantity) {
+    public void setQuantity(Float quantity) {
         this.Quantity = quantity;
     }
 
-    public Double getPrice() {
+    public Float getPrice() {
         return Price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Float price) {
         this.Price = price;
     }
 
-    public Double getTotal() {
+    public Float getTotal() {
         return Total;
     }
 
-    public void setTotal(Double total) {
+    public void setTotal(Float total) {
         this.Total = total;
     }
 

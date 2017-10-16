@@ -20,10 +20,10 @@ public class Currencies implements Serializable {
     private String CurrencyLong;
 
     @SerializedName("MinConfirmation")
-    private int MinConfirmation;
+    private Integer MinConfirmation;
 
     @SerializedName("TxFee")
-    private Double TxFee;
+    private Float TxFee;
 
     @SerializedName("IsActive")
     private Boolean IsActive;
@@ -55,19 +55,19 @@ public class Currencies implements Serializable {
         this.CurrencyLong = currencyLong;
     }
 
-    public int getMinConfirmation() {
+    public Integer getMinConfirmation() {
         return MinConfirmation;
     }
 
-    public void setMinConfirmation(int minConfirmation) {
+    public void setMinConfirmation(Integer minConfirmation) {
         this.MinConfirmation = minConfirmation;
     }
 
-    public Double getTxFee() {
+    public Float getTxFee() {
         return TxFee;
     }
 
-    public void setTxFee(Double txFee) {
+    public void setTxFee(Float txFee) {
         this.TxFee = txFee;
     }
 

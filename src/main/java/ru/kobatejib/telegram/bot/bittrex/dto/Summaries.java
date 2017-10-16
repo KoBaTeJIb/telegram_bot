@@ -19,27 +19,27 @@ public class Summaries implements Serializable {
 	@SerializedName("MarketName")
 	private String marketName;
 	@SerializedName("High")
-	private Double high;
+	private Float high;
 	@SerializedName("Low")
-	private Double low;
+	private Float low;
 	@SerializedName("Volume")
-	private Double volume;
+	private Float volume;
 	@SerializedName("Last")
-	private Double last;
+	private Float last;
 	@SerializedName("BaseVolume")
-	private Double baseVolume;
+	private Float baseVolume;
 	@SerializedName("TimeStamp")
 	private String timeStamp;
 	@SerializedName("Bid")
-	private Double bid;
+	private Float bid;
 	@SerializedName("Ask")
-	private Double ask;
+	private Float ask;
 	@SerializedName("OpenBuyOrders")
-	private int openBuyOrders;
+	private Integer openBuyOrders;
 	@SerializedName("OpenSellOrders")
-	private int openSellOrders;
+	private Integer openSellOrders;
 	@SerializedName("PrevDay")
-	private Double prevDay;
+	private Float prevDay;
 	@SerializedName("Created")
 	private String created;
 
@@ -52,47 +52,47 @@ public class Summaries implements Serializable {
 		this.marketName = marketName;
 	}
 
-	public Double getHigh() {
+	public Float getHigh() {
 		return high;
 	}
 
-	public void setHigh(Double high) {
+	public void setHigh(Float high) {
 		this.high = high;
 	}
 
 
-	public Double getLow() {
+	public Float getLow() {
 		return low;
 	}
 
-	public void setLow(Double low) {
+	public void setLow(Float low) {
 		this.low = low;
 	}
 
 
-	public Double getVolume() {
+	public Float getVolume() {
 		return volume;
 	}
 
-	public void setVolume(Double volume) {
+	public void setVolume(Float volume) {
 		this.volume = volume;
 	}
 
 
-	public Double getLast() {
+	public Float getLast() {
 		return last;
 	}
 
-	public void setLast(Double last) {
+	public void setLast(Float last) {
 		this.last = last;
 	}
 
 
-	public Double getBaseVolume() {
+	public Float getBaseVolume() {
 		return baseVolume;
 	}
 
-	public void setBaseVolume(Double baseVolume) {
+	public void setBaseVolume(Float baseVolume) {
 		this.baseVolume = baseVolume;
 	}
 
@@ -105,45 +105,45 @@ public class Summaries implements Serializable {
 	}
 
 
-	public Double getBid() {
+	public Float getBid() {
 		return bid;
 	}
 
-	public void setBid(Double bid) {
+	public void setBid(Float bid) {
 		this.bid = bid;
 	}
 
 
-	public Double getAsk() {
+	public Float getAsk() {
 		return ask;
 	}
 
-	public void setAsk(Double ask) {
+	public void setAsk(Float ask) {
 		this.ask = ask;
 	}
 
 
-	public int getOpenBuyOrders() {
+	public Integer getOpenBuyOrders() {
 		return openBuyOrders;
 	}
 
-	public void setOpenBuyOrders(int openBuyOrders) {
+	public void setOpenBuyOrders(Integer openBuyOrders) {
 		this.openBuyOrders = openBuyOrders;
 	}
 
-	public int getOpenSellOrders() {
+	public Integer getOpenSellOrders() {
 		return openSellOrders;
 	}
 
-	public void setOpenSellOrders(int openSellOrders) {
+	public void setOpenSellOrders(Integer openSellOrders) {
 		this.openSellOrders = openSellOrders;
 	}
 
-	public Double getPrevDay() {
+	public Float getPrevDay() {
 		return prevDay;
 	}
 
-	public void setPrevDay(Double prevDay) {
+	public void setPrevDay(Float prevDay) {
 		this.prevDay = prevDay;
 	}
 
