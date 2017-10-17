@@ -1,7 +1,7 @@
 package ru.kobatejib.telegram.bot.bittrex.service;
 
 /**
- * Created by Kovatelj 
+ * Created by Kovatelj
  */
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -36,9 +36,11 @@ public class JsonService {
 		System.out.println("response: " + response);
 
 		Map<String, Summary> summariesMap = new HashMap<>();
-		Type listType = new TypeToken<Response<List<Summary>>>(){}.getType();
+		Type listType = new TypeToken<Response<List<Summary>>>() {
+		}.getType();
 		Gson gson = new Gson();
-		Response<List<Summary>> responseSummaries = gson.fromJson(response, listType);
+		Response<List<Summary>> responseSummaries = gson.fromJson(response,
+				listType);
 
 		List<Summary> summaries = responseSummaries.getResult();
 
@@ -52,28 +54,32 @@ public class JsonService {
 		return summariesMap;
 	}
 
-	public Object summaryToObject (String response) {
+	public Response<Summary> summaryToObject(String response) {
 		Gson gson = new Gson();
-		Type type = new TypeToken<Response<Summary>>(){}.getType();
+		Type type = new TypeToken<Response<Summary>>() {
+		}.getType();
 		Response<Summary> responseSummary = gson.fromJson(response, type);
 		return responseSummary;
 	}
 
-	public Object tickerToObject (String response) {
+	public Response<Summary> tickerToObject(String response) {
 		Gson gson = new Gson();
-		Type type = new TypeToken<Response<Ticker>>(){}.getType();
+		Type type = new TypeToken<Response<Ticker>>() {
+		}.getType();
 		Response<Summary> responseTicker = gson.fromJson(response, type);
 		return responseTicker;
 	}
 
-	public Map<String, Currencies> currenciesToObject (String response) {
+	public Map<String, Currencies> currenciesToObject(String response) {
 		Map<String, Currencies> currenciesMap = new HashMap<>();
 		Gson gson = new Gson();
-		Type listType = new TypeToken<Response<List<Currencies>>>(){}.getType();
-		Response<List<Currencies>> responseCurrencies = gson.fromJson(response, listType);
+		Type listType = new TypeToken<Response<List<Currencies>>>() {
+		}.getType();
+		Response<List<Currencies>> responseCurrencies = gson.fromJson(response,
+				listType);
 		List<Currencies> currencies = responseCurrencies.getResult();
 
-		if(currencies != null) {
+		if (currencies != null) {
 			for (Currencies currency : currencies) {
 				currenciesMap.put(currency.getCurrency(), currency);
 			}
@@ -81,14 +87,16 @@ public class JsonService {
 		return currenciesMap;
 	}
 
-	public Map<String, Markets> marketsToObject (String response) {
+	public Map<String, Markets> marketsToObject(String response) {
 		Map<String, Markets> marketsMap = new HashMap<>();
 		Gson gson = new Gson();
-		Type listType = new TypeToken<Response<List<Markets>>>(){}.getType();
-		Response<List<Markets>> responseMarkets = gson.fromJson(response, listType);
+		Type listType = new TypeToken<Response<List<Markets>>>() {
+		}.getType();
+		Response<List<Markets>> responseMarkets = gson.fromJson(response,
+				listType);
 		List<Markets> markets = responseMarkets.getResult();
 
-		if(markets != null) {
+		if (markets != null) {
 			for (Markets market : markets) {
 				marketsMap.put(market.getMarketCurrency(), market);
 			}
@@ -96,14 +104,16 @@ public class JsonService {
 		return marketsMap;
 	}
 
-	public Map<Integer, MarketHistory> marketHistoryToObject (String response) {
+	public Map<Integer, MarketHistory> marketHistoryToObject(String response) {
 		Map<Integer, MarketHistory> historyMap = new HashMap<>();
 		Gson gson = new Gson();
-		Type listType = new TypeToken<Response<List<MarketHistory>>>(){}.getType();
-		Response<List<MarketHistory>> responseHistory = gson.fromJson(response, listType);
+		Type listType = new TypeToken<Response<List<MarketHistory>>>() {
+		}.getType();
+		Response<List<MarketHistory>> responseHistory = gson.fromJson(response,
+				listType);
 		List<MarketHistory> markets = responseHistory.getResult();
 
-		if(markets != null) {
+		if (markets != null) {
 			for (MarketHistory market : markets) {
 				historyMap.put(market.getId(), market);
 			}
@@ -111,6 +121,22 @@ public class JsonService {
 		return historyMap;
 	}
 
-
+	/**
+	 * Преобразовать json строку в объект
+	 * 
+	 * @param response
+	 *            son строка
+	 * @param T
+	 *            параметр ответа
+	 * @return объект
+	 */
+	public <T> T gsonToObject(String response) {
+		Gson gson = new Gson();
+		Type type = new TypeToken<Response<T>>() {
+		}.getType();
+		Response<T> responseObject = gson.fromJson(response, type);
+		T result = responseObject.getResult();
+		return result;
+	}
 
 }
